@@ -2,7 +2,7 @@ import SearchBar from "@/components/searchbar";
 import ShowBox from "@/components/showbox";
 import Sidebar from "@/components/sidebar";
 
-export default function Home() {
+export default function Friends() {
   return (
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
