@@ -29,7 +29,7 @@ export default function Dms() {
         <div className="b-0 flex h-[93%] w-[100%] flex-wrap bg-gray-500">
           {/*Dm list*/}
           <div className="flex h-[100%] w-[18%] justify-start">
-            <div className="flex h-[100%] w-[100%] flex-col overflow-y-auto bg-blue-300 text-black shadow-md scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent">
+            <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent flex h-[100%] w-[100%] flex-col overflow-y-auto bg-blue-300 text-black shadow-md">
               {/* Content of the first scrollable box */}
               {Array.from({ length: 60 }, (_, index) => (
                 <div key={index} className="ml-3 flex flex-wrap">
