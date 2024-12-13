@@ -4,6 +4,7 @@ import { BsCameraVideoFill } from "react-icons/bs";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import Image from "next/image";
+import Cat from "@/app/Images/cat-circle.png";
 import { FaMicrophone, FaPaperclip, FaVideo } from "react-icons/fa6";
 import { AiOutlineFileImage } from "react-icons/ai";
 
@@ -34,7 +35,7 @@ export default function Dms() {
               {Array.from({ length: 60 }, (_, index) => (
                 <div key={index} className="ml-3 flex flex-wrap">
                   <Image
-                    src="https://oakhammockah.com/wp-content/uploads/2017/12/cat-circle.png"
+                    src={Cat}
                     alt="pfp"
                     width={50}
                     height={50}
