@@ -9,8 +9,16 @@ export default function Notifications() {
 
       <div className="h-full w-[80%] flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
         <SearchBar />
-        <div className="b-0 flex h-[93%] w-[100%] bg-gray-500">
-          <div className="box-content h-[20%] w-[100%] border-2 border-black bg-gray-400">
+        <div className="b-0 flex-col h-[93%] w-[100%] bg-gray-500 flex items-center">
+          <div className="box-content h-[20%] w-[97%] border-2 border-black bg-gray-400 mt-[1%]">
+          </div>
+          <div className="box-content h-[20%] w-[97%] border-2 border-black bg-gray-400 mt-[1%]">
+          </div>
+          <div className="box-content h-[20%] w-[97%] border-2 border-black bg-gray-400 mt-[1%]">
+          </div>
+          <div className="box-content h-[20%] w-[97%] border-2 border-black bg-gray-400 mt-[1%]">
+          </div>
+          <div className="box-content h-[20%] w-[97%] border-2 border-black bg-gray-400 mt-[1%]">
           </div>
         </div>
       </div>
