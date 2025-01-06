@@ -8,7 +8,7 @@ const SearchBar = () => {
           <input
             className="flex w-full flex-grow bg-transparent text-black outline-none placeholder:text-center placeholder:text-black"
             type="text"
-            placeholder="Seacrh for account, groupchat..."
+            placeholder="Search for account, groupchat..."
           ></input>
         </div>
 
