@@ -1,6 +1,7 @@
 import { FaRegMessage, FaUserGroup } from "react-icons/fa6";
-import { IoNotifications, IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 import { LuHome } from "react-icons/lu";
+import { VscAccount } from "react-icons/vsc";
 
 const Sidebar = () => {
   return (
@@ -32,9 +33,9 @@ const Sidebar = () => {
       <div className="flex h-[10%] w-full items-center justify-center">
         <a
           className="flex h-full w-full items-center justify-center"
-          href="/notifications"
+          href="/user_account"
         >
-          <IoNotifications className="h-[80%] w-[80%]" />
+          <VscAccount className="h-[80%] w-[80%]" />
         </a>
       </div>
 

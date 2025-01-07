@@ -3,7 +3,7 @@ import Sidebar from "@/components/sidebar";
 import Image from "next/image";
 import Cat from "@/app/Images/cat-circle.png";
 
-export default function Notifications() {
+export default function Account() {
   return (
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
@@ -70,7 +70,7 @@ export default function Notifications() {
                       height={50}
                       className="py-2"></Image>
             </div>
-            <p className="ml-[1%] overflow-hidden ">Niggerfaggot has sent you a friend request</p>
+            <p className="ml-[1%] overflow-hidden "><b>Niggerfaggot</b> has sent you a friend request</p>
             <p className="ml-[61.5%] text-sm">26.12.2024</p>
           </div>
         </div>
