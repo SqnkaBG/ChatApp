@@ -11,50 +11,60 @@ export default function Settings() {
 
       <div className="h-full w-[80%] flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
         <SearchBar />
-        <div className="flex h-[93%] w-[100%] flex-col overflow-y-auto bg-blue-300 text-black">
-          <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent">
-            <h1 className="mt-[2%] flex items-center justify-center text-3xl">
+        <div className="flex h-[93%] w-full flex-col overflow-y-auto bg-gradient-to-r from-blue-400 to-blue-600 text-black">
+          <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-500">
+            {/* Title Section */}
+            <h1 className="mt-[2%] flex items-center justify-center text-4xl font-extrabold text-white drop-shadow-lg">
               Change style
             </h1>
-            <div className="flex flex-row justify-center">
-              <select className="mt-[1%] rounded-xl">
+            <div className="mt-3 flex flex-row justify-center">
+              <select className="mt-[1%] rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option>da</option>
                 <option>ne</option>
               </select>
             </div>
-            <hr className="m-[2%]" />
-            <h1 className="flex items-center justify-center text-3xl">
+            <hr className="my-6 border-gray-400" />
+
+            {/* DMS Settings Section */}
+            <h1 className="flex items-center justify-center text-4xl font-extrabold text-white drop-shadow-lg">
               DMS settings
             </h1>
-            <h2 className="mt-[1%] flex items-center justify-center text-xl">
+            <h2 className="mt-[1%] flex items-center justify-center text-xl font-medium text-white">
               Upload config from file
             </h2>
+
+            {/* File Input Section */}
             <div className="ml-[8%] flex flex-row items-center justify-center">
-              <input type="file" />
+              <input
+                type="file"
+                className="mt-2 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
             </div>
-            <h2 className="mt-[1%] flex items-center justify-center text-xl">
+
+            {/* Make Config Section */}
+            <h2 className="mt-[1%] flex items-center justify-center text-xl font-medium text-white">
               Make a config
             </h2>
-            <form className="flex flex-col items-center justify-center">
+            <form className="flex flex-col items-center justify-center space-y-4">
               {Array.from({ length: 23 }, (_, index) => {
                 return (
                   <div
                     key={index}
-                    className="m-[0.5%] flex w-[100%] flex-row justify-center"
+                    className="flex w-full flex-row items-center justify-center space-x-2"
                   >
-                    <label className="mr-[1%] justify-start">
-                      Setting {index + 1}
-                    </label>
-                    <select>
+                    <label className="text-lg text-white">{`Setting ${index + 1}`}</label>
+                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                       <option>da</option>
                       <option>ne</option>
                     </select>
                   </div>
                 );
               })}
+
+              {/* Submit Button */}
               <button
                 type="submit"
-                className="m-[2%] rounded-xl bg-green-500 px-[2%]"
+                className="mt-6 rounded-xl bg-green-500 px-6 py-3 text-xl font-semibold text-white shadow-lg hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300"
               >
                 Submit
               </button>
