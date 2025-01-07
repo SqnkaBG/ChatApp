@@ -58,7 +58,7 @@ export default function Dms() {
               <div className="flex w-[50%] items-center justify-start bg-black pl-[5%] text-green-500">
                 <a className="pr-3">
                   <Image
-                    src="https://oakhammockah.com/wp-content/uploads/2017/12/cat-circle.png"
+                    src={Cat}
                     alt="cat"
                     width={50}
                     height={50}
