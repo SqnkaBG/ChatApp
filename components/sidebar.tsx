@@ -1,7 +1,8 @@
-import { FaRegMessage, FaUserGroup } from "react-icons/fa6";
+import { FaRegMessage } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LuHome } from "react-icons/lu";
 import { VscAccount } from "react-icons/vsc";
+import { LiaUserFriendsSolid } from "react-icons/lia";
 
 const Sidebar = () => {
   return (
@@ -17,7 +18,7 @@ const Sidebar = () => {
           className="flex h-full w-full items-center justify-center"
           href="/friends"
         >
-          <FaUserGroup className="h-[80%] w-[80%]" />
+          <LiaUserFriendsSolid className="h-[80%] w-[80%]" />
         </a>
       </div>
 
