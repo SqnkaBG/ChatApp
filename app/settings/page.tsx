@@ -1,8 +1,7 @@
 import SearchBar from "@/components/searchbar";
-import ShowBox from "@/components/showbox";
+
 import Sidebar from "@/components/sidebar";
-import Cat from "@/app/Images/cat-circle.png";
-import Image from "next/image";
+
 
 export default function Settings() {
   return (
