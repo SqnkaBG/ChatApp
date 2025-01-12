@@ -45,7 +45,7 @@ export default function Account() {
               />
           </div>
           <hr className="w-[40%] color-black"/>
-          <div className="flex flex-row h-[8%] w-[30%] space-x-5 items-center ">
+          <div className="flex flex-row h-[8%] w-[30%] space-x-5 items-center pt-[2%]">
             <p className="text-lg text-black">Description</p>
             <textarea className="border-box resize-none text-black flex-grow outline-double" ></textarea>
           </div>
@@ -57,6 +57,20 @@ export default function Account() {
                 placeholder="Enter status"
               />
           </div>
+            <div className="flex flex-row w-[20%] h-[10%] justify-center ">
+              <button
+                type="button"
+                className="ml-2 h-10 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                Save changes
+              </button> 
+              <button
+                type="button"
+                className="ml-2 h-10 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                Log out
+              </button>
+            </div>
         </div>
       </div>
     </div>
