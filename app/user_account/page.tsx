@@ -14,7 +14,6 @@ export default function Account() {
             <Image
               src={Cat}
               alt="pfp"
-              height={100}
               width={100}
               className="mt-[4%]"
             />
@@ -49,27 +48,23 @@ export default function Account() {
             <p className="text-lg text-black">Description</p>
             <textarea className="border-box resize-none text-black flex-grow outline-double" ></textarea>
           </div>
-          <div className="flex flex-row h-[8%] w-[30%] space-x-5 items-center">
-            <p className="text-lg text-black">Status</p>
+          <div className="flex flex-row h-[8%] w-[30%] space-x-5 space-y-8 items-center">
+            <p className="text-lg text-black mt-[5.5%]">Status</p>
             <input
                 type="text"
                 className="h-7 text-black text-lg outline-double flex-grow rounded-xl pl-[1%]" 
                 placeholder="Enter status"
               />
           </div>
-            <div className="flex flex-row w-[20%] h-[10%] justify-center ">
+            <div className="flex flex-row w-[20%] h-[10%] justify-center space-x-4 ml-[1%]">
               <button
                 type="button"
-                className="ml-2 h-10 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                Save changes
-              </button> 
+                className="mt-[5%] h-10 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >Save changes</button> 
               <button
                 type="button"
-                className="ml-2 h-10 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                Log out
-              </button>
+                className="mt-[5%] h-10 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >Log out</button>
             </div>
         </div>
       </div>
