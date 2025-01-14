@@ -25,7 +25,7 @@ export default function Account() {
             <input
                 type="text"
                 className="h-7 flex-grow text-black text-lg outline-double" 
-                value=" User1"
+                alt="User1"
               />
           </div>
           <div className="flex flex-row h-[8%] w-[30%] space-x-5 items-center">
@@ -33,7 +33,6 @@ export default function Account() {
             <input
                 type="text"
                 className="h-7 flex-grow text-black text-lg outline-double" 
-                value=" 088-111-1111"
               />
           </div>
           <div className="flex flex-row h-[8%] w-[30%] space-x-5 items-center">

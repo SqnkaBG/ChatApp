@@ -6,14 +6,14 @@ import { LiaUserFriendsSolid } from "react-icons/lia";
 
 const Sidebar = () => {
   return (
-    <div className="flex h-full w-[20%] flex-col items-center justify-center bg-[#00cc77] sm:w-[4.5%]">
-      <div className="flex h-[10%] w-full items-center justify-center">
+    <div className="flex md:h-full md:w-[4.5%] md:flex-col items-center justify-center bg-[#00cc77] sm:w-[4.5%] flex-row h-[10%] w-full md:static absolute bottom-0">
+      <div className="flex md:h-[10%] h-[80%] w-full items-center justify-center">
         <a className="flex h-full w-full items-center justify-center" href="/">
           <LuHome className="h-[80%] w-[80%]" />
         </a>
       </div>
 
-      <div className="flex h-[10%] w-full items-center justify-center">
+      <div className="flex md:h-[10%] h-[100%] w-full items-center justify-center">
         <a
           className="flex h-full w-full items-center justify-center"
           href="/friends"
@@ -22,7 +22,7 @@ const Sidebar = () => {
         </a>
       </div>
 
-      <div className="flex h-[10%] w-full items-center justify-center">
+      <div className="flex md:h-[10%] h-[70%] w-full items-center justify-center">
         <a
           className="flex h-full w-full items-center justify-center"
           href="/dms"
@@ -31,7 +31,7 @@ const Sidebar = () => {
         </a>
       </div>
 
-      <div className="flex h-[10%] w-full items-center justify-center">
+      <div className="flex md:h-[10%] h-[80%] w-full items-center justify-center">
         <a
           className="flex h-full w-full items-center justify-center"
           href="/user_account"
@@ -40,7 +40,7 @@ const Sidebar = () => {
         </a>
       </div>
 
-      <div className="flex h-[10%] w-full items-center justify-center">
+      <div className="flex md:h-[10%] h-[80%] w-full items-center justify-center">
         <a
           className="flex h-full w-full items-center justify-center"
           href="/settings"
