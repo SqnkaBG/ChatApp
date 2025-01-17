@@ -8,29 +8,29 @@ export default function Account() {
   return (
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
-      <div className="h-full w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
+      <div className="h-full w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%] ">
         <SearchBar />
-        <div className="b-0 flex-col h-[93%] w-[100%] bg-blue-300 flex items-center space-y-1 pb-[2%] overflow-y-auto"> 
-          <div className="flex flex-row h-[18%] w-[40%] items-center justify-center mb-[1%]">
-            <Image
+        <div className="b-0 flex-col h-f  h-[93%] w-[100%] bg-blue-300 flex items-center space-y-1 pb-[2%] overflow-y-auto"> 
+          <div className="flex flex-row h-[18%] w-[40%] items-center justify-center mb-[5%] lg:mb-[1%] lg:mt-0 mt-[5%] ">
+            <Image  
               src={Cat}
               alt="pfp"
               height={0}
               width={90}
               className="mt-[4%] lg:w-100"/>
-            <label htmlFor="file-upload" className="cursor-pointer text-gray-200 hover:text-gray-400 mb-[6%] ">
+            <label htmlFor="image-upload" className="cursor-pointer text-gray-200 hover:text-gray-400 mb-[38%] lg:mb-[6%]">
                 <FaPencilAlt className=""/>
             </label>
-            <input type="file" id="file-upload" className="hidden"/>
+            <input type="file" id="image-upload" accept="image/*" className="hidden"/>
             <h1 className="text-center text-4xl text-black mt-[4%] ml-[2%]"><b>User1</b></h1>
           </div>
-          <hr className="w-[40%]"/>
-          <div className="h-full w-[40%] flex flex-col space-y-12 items-center overflow-y-auto pt-[1%] pb-[1%]">
+          <hr className="w-[70%] lg:w-[40%]"/>
+          <div className="h-full w-[95%] lg:w-[40%] flex flex-col space-y-12 items-center overflow-y-auto pt-[5%] lg:pt-[1%] pb-[5%] lg:pb-[1%]">
             {Array.from({ length: 48 }, (_, index) => {
             return (
               <div
                 key={index}
-                className="flex flex-row h-auto w-[90%] space-x-5 items-center justify-center">
+                className="flex flex-row h-auto w-auto lg:w-[90%] space-x-5 items-center justify-center">
                   <label className="text-lg text-black">{`Setting ${index + 1}`}</label>
                   <input
                   type="text"
@@ -39,12 +39,12 @@ export default function Account() {
               );
             })}
           </div>
-          <hr className="w-[40%] mt-[20%]"/>
-          <div className="flex flex-row h-[8%] w-[30%] space-x-5 items-center pt-[2%]">
+          <hr className="w-[70%] lg:w-[40%] mt-[20%]"/>
+          <div className="flex flex-row h-[8%] w-auto lg:w-[30%] space-x-5 items-center pt-[5%] lg:pt-[2%]">
             <p className="text-lg text-black">Description</p>
             <textarea className="border-box resize-none text-black flex-grow outline-double" ></textarea>
           </div>
-          <div className="flex flex-row h-[8%] w-[30%] space-x-5 space-y-8 justify-end">
+          <div className="flex flex-row h-[8%] w-auto lg:w-[30%] space-x-5 space-y-8 justify-end pt-[3%] lg:pt-0">
             <p className="text-lg text-black mt-[5.5%]">Status</p>
             <input
                 type="text"
