@@ -8,7 +8,7 @@ export default function Account() {
   return (
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
-      <div className="h-full w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%] ">
+      <div className="h-[90%] w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%] ">
         <SearchBar />
         <div className="b-0 flex-col h-f h-[93%] w-[100%] bg-blue-300 flex items-center space-y-1 pb-[2%] overflow-y-auto"> 
           <div className="flex flex-row h-[13%] lg:h-[18%] w-[40%] items-center justify-center mb-[5%] lg:mb-[1%] lg:mt-0 mt-[5%] ">

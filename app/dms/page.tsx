@@ -24,7 +24,7 @@ export default function Dms() {
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
 
-      <nav className="h-full w-[80%] flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
+      <nav className="h-[99%] w-[80%] flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
         <SearchBar />
 
         <div className="b-0 flex h-[93%] w-[100%] flex-wrap bg-gray-500">
