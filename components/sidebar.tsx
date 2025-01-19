@@ -6,7 +6,7 @@ import { LiaUserFriendsSolid } from "react-icons/lia";
 
 const Sidebar = () => {
   return (
-    <div className="flex md:h-full md:w-[4.5%] md:flex-col items-center justify-center bg-[#00cc77] sm:w-[4.5%] flex-row h-[10%] w-full md:static absolute bottom-0">
+    <div className="flex md:h-full md:w-[4.5%] md:flex-col items-center justify-center bg-[#00cc77] sm:w-[4.5%] flex-row h-[10%] w-full md:static fixed bottom-0">
       <div className="flex md:h-[10%] h-[80%] w-full items-center justify-center">
         <a className="flex h-full w-full items-center justify-center" href="/">
           <LuHome className="h-[80%] w-[80%]" />
