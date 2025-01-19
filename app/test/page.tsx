@@ -1,11 +1,10 @@
-import Sidebar from "@/components/sidebar";
+import SearchBar from "@/components/searchbar";
+
 
 
 export default function Test() {
  
   return (
-    <div className="flex h-screen w-screen flex-wrap bg-white">
-      <Sidebar/>
-    </div>
+    <SearchBar/>
   );
 }
