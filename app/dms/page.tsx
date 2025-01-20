@@ -11,29 +11,29 @@ import { AiOutlineFileImage } from "react-icons/ai";
 export default function Dms() {
   const User1 = [
     { text: "Hello", time: 1 },
-    { text: "I hate niggers", time: 3 },
+    { text: "I hate snickers", time: 3 },
     { text: "What about you?", time: 3 },
     { text: "Bye", time: 5 },
   ];
   const Me = [
-    { text: "Do you hate niggers?", time: 2 },
-    { text: "I want to kill these blackies", time: 4 },
+    { text: "Do you hate snickers?", time: 2 },
+    { text: "I want to kill these blockies", time: 4 },
     { text: "Bye, cuz they called me for dinner", time: 4 },
   ];
   return (
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
 
-      <nav className="h-[99%] w-[80%] flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
+      <div className="h-[90%] md:h-[99%] w-full  flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
         <SearchBar />
 
         <div className="b-0 flex h-[93%] w-[100%] flex-wrap bg-gray-500">
           {/*Dm list*/}
-          <div className="flex h-[100%] w-[18%] justify-start">
-            <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent flex h-[100%] w-[100%] flex-col overflow-y-auto bg-blue-300 text-black shadow-md">
+          <div className="flex h-[100%] w-full md:w-[18%] justify-start">
+            <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent flex h-[100%] w-[100%] flex-col overflow-y-auto bg-blue-300 text-black shadow-md pb-[5%] md:pb-0">
               {/* Content of the first scrollable box */}
               {Array.from({ length: 60 }, (_, index) => (
-                <div key={index} className="ml-3 flex flex-wrap">
+                <div key={index} className="pl-3 flex flex-wrap active:bg-blue-200 active:bg-opacity-75 rounded-xl ">
                   <Image
                     src={Cat}
                     alt="pfp"
@@ -41,7 +41,7 @@ export default function Dms() {
                     height={50}
                     className="py-2"
                   />
-                  <div className="ml-4 flex max-w-[60%] flex-col justify-center">
+                  <div className="ml-4 flex w-[76%] md:max-w-[60%] flex-col  justify-center">
                     <h1 className="text-xl font-bold">User1</h1>
                     <p className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-sm">
                       Last message by afafd and some additional text that will
@@ -52,7 +52,7 @@ export default function Dms() {
               ))}
             </div>
           </div>
-          <div className="flex h-[100%] w-[82%] flex-col">
+          <div className="hidden md:flex h-[100%] w-[82%] flex-col hidden md:block">
             {/* Chatbox headline */}
             <div className="mb-1 flex h-[8%] w-[100%] flex-wrap">
               <div className="flex w-[50%] items-center justify-start bg-black pl-[5%] text-green-500">
@@ -163,7 +163,7 @@ export default function Dms() {
             </div>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
   );
 }

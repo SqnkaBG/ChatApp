@@ -8,9 +8,9 @@ export default function Settings() {
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
 
-      <div className="h-[99%] w-[80%] flex-col items-center justify-center bg-teal-700 md:w-[95.5%]">
+      <div className="h-[99%] w-[80%] flex-col items-center justify-center bg-teal-700 md:w-[95.5%] ">
         <SearchBar />
-        <div className="flex h-[93%] w-full flex-col overflow-y-auto bg-gradient-to-r from-blue-400 to-blue-600 text-black">
+        <div className="flex h-[93%] w-full flex-col overflow-y-auto bg-gradient-to-r from-blue-400 to-blue-600 text-black pb-[1%]">
           <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-500">
             {/* Title Section */}
             <h1 className="mt-[2%] flex items-center justify-center text-4xl font-extrabold text-white drop-shadow-lg">
