@@ -9,7 +9,7 @@ export default function Friends() {
     <div className="g-white flex h-screen w-screen">
       <Sidebar/>
 
-      <div className="h-[90%] lg:h-[92.5%] w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
+      <div className="h-[95%] md:h-[95.5%] w-full flex-col items-center justify-center bg-transparent">
         <SearchBar/>
         <div className="flex flex-col lg:flex-row h-full w-full lg:flex-wrap lg:justify-center md:space-x-12 space-y-2 md:space-y-12 bg-gray-300 overflow-y-auto pb-[22%] lg:pb-[3%]">
           <h1 className="lg:mt-[1.3%] mt-[4%] text-center w-full text-4xl text-black">Friends</h1>

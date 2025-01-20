@@ -7,7 +7,7 @@ export default function Home() {
     <div className="flex h-screen w-screen flex-wrap bg-white">
       <Sidebar />
 
-      <div className="h-full w-[80%] flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
+      <div className="h-full md:w-[95.5%] w-[full] flex-col items-center justify-center bg-teal-700 w-full">
         <SearchBar />
         <ShowBox />
       </div>
