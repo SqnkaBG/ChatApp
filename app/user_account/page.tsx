@@ -46,6 +46,33 @@ export default function Account() {
                                 className="h-7 w-[50%] pl-[0.5%] text-lg text-black outline-double"
                             />
                         </div>
+                        <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
+                            <label className="text-lg text-black">
+                                First Name
+                            </label>
+                            <input
+                                type="text"
+                                className="h-7 w-[50%] pl-[0.5%] text-lg text-black outline-double"
+                            />
+                        </div>
+                        <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
+                            <label className="text-lg text-black">
+                                Last Name
+                            </label>
+                            <input
+                                type="text"
+                                className="h-7 w-[50%] pl-[0.5%] text-lg text-black outline-double"
+                            />
+                        </div>
+                        <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 pr-[3%] lg:w-[90%]">
+                            <label className="text-lg text-black">
+                                Phone Number
+                            </label>
+                            <input
+                                type="text"
+                                className="h-7 w-[50%] pl-[0.5%] text-lg text-black outline-double"
+                            />
+                        </div>
                     </div>
                     <hr className="mt-[20%] w-[70%] lg:w-[40%]" />
                     <div className="ml-[4%] flex h-[10%] w-[20%] flex-row justify-center pt-[5%] lg:ml-[1%] lg:pt-[1%]">
