@@ -36,38 +36,19 @@ export default function Account() {
                         </h1>
                     </div>
                     <hr className="w-[70%] lg:w-[40%]" />
-                    <div className="flex h-[42%] w-[95%] flex-col items-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] lg:h-full lg:w-[40%] lg:pb-[1%] lg:pt-[1%]">
-                        {Array.from({ length: 48 }, (_, index) => {
-                            return (
-                                <div
-                                    key={index}
-                                    className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]"
-                                >
-                                    <label className="text-lg text-black">{`Setting ${index + 1}`}</label>
-                                    <input
-                                        type="text"
-                                        className="h-7 w-[50%] pl-[0.5%] text-lg text-black outline-double"
-                                    />
-                                </div>
-                            );
-                        })}
+                    <div className="flex h-[55%] w-[95%] flex-col items-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] lg:h-[70%] lg:h-full lg:w-[40%] lg:pb-[1%] lg:pt-[1%]">
+                        <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
+                            <label className="text-lg text-black">
+                                Username
+                            </label>
+                            <input
+                                type="text"
+                                className="h-7 w-[50%] pl-[0.5%] text-lg text-black outline-double"
+                            />
+                        </div>
                     </div>
                     <hr className="mt-[20%] w-[70%] lg:w-[40%]" />
-                    <div className="flex h-[8%] w-auto flex-row items-center space-x-5 pt-[5%] lg:w-[30%] lg:pt-[2%]">
-                        <p className="text-lg text-black">Description</p>
-                        <textarea className="border-box flex-grow resize-none text-black outline-double"></textarea>
-                    </div>
-                    <div className="flex h-[8%] w-auto flex-row justify-end space-x-5 space-y-8 pt-[3%] lg:w-[30%] lg:pt-0">
-                        <p className="mt-[10%] text-lg text-black lg:mt-[5.5%]">
-                            Status
-                        </p>
-                        <input
-                            type="text"
-                            className="h-7 flex-grow rounded-xl pl-[1%] text-lg text-black outline-double"
-                            placeholder="Enter status"
-                        />
-                    </div>
-                    <div className="ml-[4%] flex h-[10%] w-[20%] flex-row justify-center pt-[10%] lg:ml-[1%] lg:pt-[1%]">
+                    <div className="ml-[4%] flex h-[10%] w-[20%] flex-row justify-center pt-[5%] lg:ml-[1%] lg:pt-[1%]">
                         <button
                             type="button"
                             className="mt-[5%] h-10 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 lg:mt-0"
