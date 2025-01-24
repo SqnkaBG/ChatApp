@@ -6,7 +6,7 @@ export default function Settings() {
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
 
-            <div className="h-[100%] w-[100%] flex-col items-center justify-center overflow-y-auto bg-gradient-to-r from-blue-400 to-blue-600 md:w-[95.5%]">
+            <div className="h-full w-full flex-col items-center justify-center overflow-y-auto bg-gradient-to-r from-blue-400 to-blue-600 md:w-[95.5%]">
                 <SearchBar />
                 <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">
                     <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-500">
