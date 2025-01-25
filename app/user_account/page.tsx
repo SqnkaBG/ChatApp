@@ -53,31 +53,42 @@ export default function Account() {
     }
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (typeof window !== "undefined") {
-            try {
-                // Save data to localStorage
-                localStorage.setItem("username", username);
-                localStorage.setItem("firstName", firstName);
-                localStorage.setItem("lastName", lastName);
-                localStorage.setItem("telNumber", telNumber);
 
-                // Update the stored data state
-                setStoredData({
-                    username,
-                    firstName,
-                    lastName,
-                    telNumber,
-                });
+        // Check if any data has changed
+        const dataHasChanged =
+            username !== storedData.username ||
+            firstName !== storedData.firstName ||
+            lastName !== storedData.lastName ||
+            telNumber !== storedData.telNumber;
 
-                // Show success message
-                alert("Data saved successfully!");
+        if (dataHasChanged) {
+            if (typeof window !== "undefined") {
+                try {
+                    // Save data to localStorage
+                    if (username) localStorage.setItem("username", username);
+                    if (firstName) localStorage.setItem("firstName", firstName);
+                    if (lastName) localStorage.setItem("lastName", lastName);
+                    if (telNumber) localStorage.setItem("telNumber", telNumber);
 
-                // Reload the page
-                window.location.reload();
-            } catch (error) {
-                console.error("Error saving to localStorage:", error);
-                alert("An error occurred while saving data.");
+                    // Update the stored data state
+                    setStoredData({
+                        username,
+                        firstName,
+                        lastName,
+                        telNumber,
+                    });
+
+                    // Show success message
+                    alert("Data saved successfully!");
+                    window.location.reload();
+                } catch (error) {
+                    console.error("Error saving to localStorage:", error);
+                    alert("An error occurred while saving data.");
+                }
             }
+        } else {
+            // If no changes, show a message or do nothing
+            alert("No changes detected, data not saved.");
         }
     };
 
@@ -125,6 +136,7 @@ export default function Account() {
                                 type="text"
                                 id="username"
                                 value={username}
+                                pattern="\[A-Za-z0-9]{3,19}"
                                 placeholder={
                                     storedData.username || "Create Username"
                                 }
@@ -140,6 +152,7 @@ export default function Account() {
                                 type="text"
                                 id="username"
                                 value={firstName}
+                                pattern="\[A-Z]{1}[a-z]{3,19}"
                                 placeholder={
                                     storedData.firstName || "Create First Name"
                                 }
@@ -155,6 +168,7 @@ export default function Account() {
                                 type="text"
                                 id="username"
                                 value={lastName}
+                                pattern="\[A-Z]{1}[a-z]{3,19}"
                                 placeholder={
                                     storedData.lastName || "Create Last Name"
                                 }
