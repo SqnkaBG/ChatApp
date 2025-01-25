@@ -47,14 +47,11 @@ export default function Account() {
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
         if (file) {
-            // Create an object URL for the selected file
             setImageSrc(URL.createObjectURL(file));
         }
     }
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
-        // Check if any data has changed
         const dataHasChanged =
             username !== storedData.username ||
             firstName !== storedData.firstName ||
@@ -69,8 +66,6 @@ export default function Account() {
                     if (firstName) localStorage.setItem("firstName", firstName);
                     if (lastName) localStorage.setItem("lastName", lastName);
                     if (telNumber) localStorage.setItem("telNumber", telNumber);
-
-                    // Update the stored data state
                     setStoredData({
                         username,
                         firstName,
@@ -78,7 +73,6 @@ export default function Account() {
                         telNumber,
                     });
 
-                    // Show success message
                     alert("Data saved successfully!");
                     window.location.reload();
                 } catch (error) {
@@ -87,7 +81,6 @@ export default function Account() {
                 }
             }
         } else {
-            // If no changes, show a message or do nothing
             alert("No changes detected, data not saved.");
         }
     };
