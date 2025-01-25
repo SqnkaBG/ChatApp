@@ -49,9 +49,9 @@ export default function Account() {
                         </h1>
                     </div>
                     <hr className="w-[70%] border-[#127d46] lg:w-[40%]" />
-                    <div className="flex h-[55%] w-[95%] flex-col items-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] lg:h-[70%] lg:h-full lg:w-[50%] lg:pb-[1%] lg:pt-[2%]">
+                    <div className="flex h-[55%] w-[95%] flex-col items-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] lg:h-[45%] lg:w-[50%] lg:pb-[1%] lg:pt-[2%]">
                         <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
-                            <label className="text-lg text-black">
+                            <label className="text-black lg:text-lg">
                                 Username
                             </label>
                             <input
@@ -60,7 +60,7 @@ export default function Account() {
                             />
                         </div>
                         <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
-                            <label className="text-lg text-black">
+                            <label className="text-black lg:text-lg">
                                 First Name
                             </label>
                             <input
@@ -69,7 +69,7 @@ export default function Account() {
                             />
                         </div>
                         <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
-                            <label className="text-lg text-black">
+                            <label className="text-black lg:text-lg">
                                 Last Name
                             </label>
                             <input
@@ -77,8 +77,8 @@ export default function Account() {
                                 className="shadow-custom h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black outline-none"
                             />
                         </div>
-                        <div className="mr-[4%] flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
-                            <label className="text-lg text-black">
+                        <div className="mr-[10%] flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:mr-[4%] lg:w-[90%]">
+                            <label className="overflow-auto text-black lg:text-lg">
                                 Phone Number
                             </label>
                             <input
@@ -93,7 +93,7 @@ export default function Account() {
                     <div className="ml-[4%] flex h-[10%] w-[20%] flex-row justify-center pt-[5%] lg:ml-[1%] lg:pt-[1%]">
                         <button
                             type="button"
-                            className="mt-[5%] h-10 w-[30%] cursor-pointer rounded-lg border-b-[4px] border-cyan-800 bg-cyan-700 px-6 py-2 text-white transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0"
+                            className="mt-[5%] h-10 cursor-pointer rounded-lg border-b-[4px] border-cyan-800 bg-cyan-700 px-6 py-2 text-white transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[30%]"
                         >
                             Save{" "}
                         </button>
