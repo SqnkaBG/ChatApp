@@ -6,7 +6,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 
 export default function Friends() {
     return (
-        <div className="g-white flex h-screen w-full flex-grow max-h-screen">
+        <div className="g-white flex h-screen max-h-screen w-full flex-grow">
             <Sidebar />
 
             <div className="h-screen w-screen flex-col items-center justify-center overflow-y-auto bg-gray-300">
@@ -26,7 +26,7 @@ export default function Friends() {
                                     src={Cat}
                                     alt="pfp"
                                     width={55}
-                                    className="ml-[3%] w-[36%] md:w-[20%] lg:h-[65%] lg:w-[25%] object-scale-down"
+                                    className="ml-[3%] w-[36%] object-scale-down md:w-[20%] lg:h-[65%] lg:w-[25%]"
                                 />
                                 <p className="text-l ml-[5%] text-black md:text-3xl lg:ml-[3%] lg:text-xl">
                                     User1
