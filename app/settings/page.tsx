@@ -2,8 +2,51 @@
 
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
+import React, { useEffect, useState } from "react";
 
 export default function Settings() {
+    const [style, setStyle] = useState("1");
+    const [storedData, setStoredData] = useState<string>("1");
+    const [selectedValue, setSelectedValue] = useState<string>(storedData);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            try {
+                const storedStyle = localStorage.getItem("style");
+                if (storedStyle) {
+                    setStoredData(storedStyle);
+                    setSelectedValue(storedStyle);
+                } else {
+                    setStoredData("1");
+                    setSelectedValue("1");
+                }
+            } catch (error) {
+                console.error("Error accessing localStorage:", error);
+            }
+        }
+    }, []);
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const dataHasChanged = style !== storedData;
+
+        if (dataHasChanged) {
+            if (typeof window !== "undefined") {
+                try {
+                    // Save data to localStorage
+                    if (style) localStorage.setItem("style", style);
+                    setStoredData(style);
+
+                    alert("Data saved successfully!");
+                    window.location.reload();
+                } catch (error) {
+                    console.error("Error saving to localStorage:", error);
+                    alert("An error occurred while saving data.");
+                }
+            } else {
+                alert("No changes detected, data not saved.");
+            }
+        }
+    };
     return (
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
@@ -15,18 +58,18 @@ export default function Settings() {
                         <h1 className="mt-[2%] flex items-center justify-center text-4xl font-extrabold text-white drop-shadow-lg">
                             Change style
                         </h1>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="mt-3 flex flex-row justify-center">
                                 <select
-                                    id="select_style"
+                                    value={selectedValue}
+                                    onChange={(e) => {
+                                        setStyle(e.target.value);
+                                        setSelectedValue(e.target.value);
+                                    }}
                                     className="mt-[1%] rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
-                                    <option value="green/blue">
-                                        Green/Blue
-                                    </option>
-                                    <option value="purple/white">
-                                        Purple/White
-                                    </option>
+                                    <option value="1">Blue</option>
+                                    <option value="2">Red</option>
                                 </select>
                             </div>
                             <hr className="my-6 border-gray-400" />
