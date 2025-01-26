@@ -79,16 +79,16 @@ export default function Account() {
                     console.error("Error saving to localStorage:", error);
                     alert("An error occurred while saving data.");
                 }
+            } else {
+                alert("No changes detected, data not saved.");
             }
-        } else {
-            alert("No changes detected, data not saved.");
         }
     };
 
     return (
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
-            <div className="h-[99%] w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%]">
+            <div className="h-[96%] w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%] md:h-[99%]">
                 <SearchBar />
                 <form
                     onSubmit={handleSubmit}
@@ -104,7 +104,7 @@ export default function Account() {
                         />
                         <label
                             htmlFor="image-upload"
-                            className="mb-[38%] cursor-pointer text-gray-200 hover:text-gray-400 lg:mb-[6%]"
+                            className="mb-[38%] cursor-pointer text-gray-200 hover:text-gray-400 md:mb-[24%] lg:mb-[6%]"
                         >
                             <FaPencilAlt className="" />
                         </label>
@@ -115,13 +115,13 @@ export default function Account() {
                             onChange={handleChange}
                             className="hidden"
                         />
-                        <h1 className="ml-[2%] mt-[4%] text-center text-4xl font-bold text-black">
+                        <h1 className="ml-[2%] mt-[4%] object-scale-down text-center text-4xl font-bold text-black">
                             {storedData.username || "Not set yet"}
                         </h1>
                     </div>
                     <hr className="w-[70%] border-[#127d46] lg:w-[40%]" />
-                    <div className="flex h-[55%] w-[95%] flex-col items-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] lg:h-[45%] lg:w-[50%] lg:pb-[1%] lg:pt-[2%]">
-                        <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
+                    <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-[50%]">
+                        <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label className="text-black lg:text-lg">
                                 Username
                             </label>
@@ -137,7 +137,7 @@ export default function Account() {
                                 className="h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black shadow-custom outline-none"
                             />
                         </div>
-                        <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
+                        <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label className="text-black lg:text-lg">
                                 First Name
                             </label>
@@ -153,7 +153,7 @@ export default function Account() {
                                 className="h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black shadow-custom outline-none"
                             />
                         </div>
-                        <div className="flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:w-[90%]">
+                        <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label className="text-black lg:text-lg">
                                 Last Name
                             </label>
@@ -169,8 +169,8 @@ export default function Account() {
                                 className="h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black shadow-custom outline-none"
                             />
                         </div>
-                        <div className="mr-[10%] flex h-auto w-auto flex-row items-center justify-center space-x-5 lg:mr-[4%] lg:w-[90%]">
-                            <label className="overflow-auto text-black lg:text-lg">
+                        <div className="mr-[10%] mr-[4.3%] flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
+                            <label className="text-black lg:text-lg">
                                 Phone Number
                             </label>
                             <input
