@@ -132,7 +132,17 @@ export default function Settings() {
                                 })}
                                 <button
                                     type="submit"
-                                    className="mt-6 rounded-xl bg-green-500 px-6 py-3 text-xl font-semibold text-white shadow-lg hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300"
+                                    className={`${
+                                        storedData === "1"
+                                            ? "bg-green-500 text-white hover:bg-green-600 focus:ring-green-300"
+                                            : storedData === "2"
+                                              ? "bg-red-700 text-white hover:bg-red-800 focus:ring-red-300"
+                                              : storedData === "3"
+                                                ? "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-300"
+                                                : storedData === "4"
+                                                  ? "bg-yellow-500 text-black hover:bg-yellow-600 focus:ring-yellow-300"
+                                                  : ""
+                                    } mt-6 rounded-xl px-6 py-3 text-xl font-semibold shadow-lg focus:outline-none focus:ring-4`}
                                 >
                                     Submit
                                 </button>

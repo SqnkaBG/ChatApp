@@ -34,9 +34,15 @@ const SearchBar = () => {
                           : ""
             } flex h-[10%] w-[100%] flex-wrap items-center justify-center md:h-[8%] md:w-[100%]`}
         >
-            <div className="flex w-[30%] rounded-md bg-slate-400 transition-all duration-300 focus-within:w-[80%] hover:w-[80%] active:w-[80%] md:w-[30%] md:focus-within:w-[30%] md:hover:w-[30%] md:active:w-[30%]">
+            <div
+                className={`${
+                    storedData === "2" || storedData === "4"
+                        ? "bg-white"
+                        : "bg-slate-400"
+                } flex w-[30%] rounded-md transition-all duration-300 focus-within:w-[80%] hover:w-[80%] active:w-[80%] md:w-[30%] md:focus-within:w-[30%] md:hover:w-[30%] md:active:w-[30%]`}
+            >
                 <input
-                    className="flex w-full bg-transparent text-center text-black outline-none placeholder:text-gray-700 focus:placeholder:text-slate-400"
+                    className="flex w-full bg-transparent text-center text-black outline-none placeholder:text-gray-700 focus:placeholder:text-transparent"
                     type="text"
                     placeholder="Search for account, groupchat..."
                 />
