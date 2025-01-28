@@ -35,7 +35,6 @@ export default function Settings() {
                     // Save data to localStorage
                     if (style) localStorage.setItem("style", style);
                     setStoredData(style);
-
                     alert("Data saved successfully!");
                     window.location.reload();
                 } catch (error) {
@@ -50,8 +49,19 @@ export default function Settings() {
     return (
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
-
-            <div className="h-full w-full flex-col items-center justify-center overflow-y-auto bg-gradient-to-r from-blue-400 to-blue-600 md:w-[95.5%]">
+            <div
+                className={`${
+                    storedData === "1"
+                        ? "bg-gradient-to-r from-blue-400 to-blue-600"
+                        : storedData === "2"
+                          ? "bg-gradient-to-br from-[#374151] via-[#f43f5e] to-[#fb923c]"
+                          : storedData === "3"
+                            ? "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
+                            : storedData === "4"
+                              ? "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#f59e0b] via-[#f59e0b] to-[#ea580c]"
+                              : ""
+                } h-full w-full flex-col items-center justify-center overflow-y-auto md:w-[95.5%]`}
+            >
                 <SearchBar />
                 <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">
                     <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-500">
@@ -70,6 +80,8 @@ export default function Settings() {
                                 >
                                     <option value="1">Blue</option>
                                     <option value="2">Red</option>
+                                    <option value="3">Purple</option>
+                                    <option value="4">Yellow</option>
                                 </select>
                             </div>
                             <hr className="my-6 border-gray-400" />
