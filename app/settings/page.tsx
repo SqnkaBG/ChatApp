@@ -102,36 +102,121 @@ export default function Settings() {
                             <div className="ml-[8%] flex flex-row items-center justify-center">
                                 <input
                                     type="file"
+                                    accept=".js"
                                     className="mt-2 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
 
                             <h2
-                                className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} font-medium" mt-[1%] flex items-center justify-center text-xl`}
+                                className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} font-medium" mt-[1%] flex items-center justify-center text-xl md:mb-[1%]`}
                             >
                                 Make a config
                             </h2>
                             <div className="flex flex-col items-center justify-center space-y-4">
-                                {Array.from({ length: 23 }, (_, index) => {
-                                    return (
-                                        <div
-                                            key={index}
-                                            className="flex w-full flex-row items-center justify-center space-x-2"
-                                        >
-                                            <label
-                                                className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                            >
-                                                {`Setting ${index + 1}`}
-                                            </label>
-                                            <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                                <option>da</option>
-                                                <option>ne</option>
-                                            </select>
-                                        </div>
-                                    );
-                                })}
+                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Time Format"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>12-hour</option>
+                                        <option>24-hour</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Font"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Serif</option>
+                                        <option>Sans-serif</option>
+                                        <option>Arial</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Font size"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Small</option>
+                                        <option>Medium</option>
+                                        <option>Large</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Display Avatars"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Animations"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Enable notifications"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Message Bubbles"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Rounded</option>
+                                        <option>Square</option>
+                                        <option>None</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Message Bubble Color"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>some colors</option>
+                                    </select>
+                                </div>
+                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                    <label
+                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
+                                    >
+                                        {"Enable custom chat background"}
+                                    </label>
+                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
                                 <button
                                     type="submit"
+                                    //onClick= {}
                                     className={`${
                                         storedData === "1"
                                             ? "bg-green-500 text-white hover:bg-green-600 focus:ring-green-300"
