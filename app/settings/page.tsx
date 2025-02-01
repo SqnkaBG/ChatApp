@@ -216,20 +216,19 @@ export default function Settings() {
                                 </div>
                                 <button
                                     type="submit"
-                                    //onClick= {}
                                     className={`${
                                         storedData === "1"
-                                            ? "bg-green-500 text-white hover:bg-green-600 focus:ring-green-300"
+                                            ? "border-green-800 bg-green-700 text-white"
                                             : storedData === "2"
-                                              ? "bg-red-700 text-white hover:bg-red-800 focus:ring-red-300"
+                                              ? "border-red-900 bg-red-800 text-black"
                                               : storedData === "3"
-                                                ? "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-300"
+                                                ? "border-blue-800 bg-blue-700 text-white"
                                                 : storedData === "4"
-                                                  ? "bg-peach hover:bg-light-peach text-black focus:ring-yellow-300"
+                                                  ? "border-peach bg-light-peach text-black"
                                                   : ""
-                                    } mt-6 rounded-xl px-6 py-3 text-xl font-semibold shadow-lg focus:outline-none focus:ring-4`}
+                                    } m-[-8%] h-10 cursor-pointer rounded-lg border-b-[4px] px-6 py-2 transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[6%]`}
                                 >
-                                    Submit
+                                    Submit{" "}
                                 </button>
                             </div>
                         </form>

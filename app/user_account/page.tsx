@@ -117,9 +117,8 @@ export default function Account() {
                 <div
                     className={`${
                         isVisible === true ? "z-10 block" : "hidden"
-                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-col overflow-auto rounded-md bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row lg:space-x-3`}
+                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-col justify-center overflow-auto rounded-xl bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[32%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row lg:space-x-4`}
                 >
-                    {/*toz div trqbva da se napravi full h i w za da ne mogat da se klikat elementi ot div-a zad nego*/}
                     {Array.from({ length: images.length }, (_, index) => {
                         return (
                             <Image
@@ -139,7 +138,7 @@ export default function Account() {
                 </div>
                 <form
                     onSubmit={handleSubmit}
-                    className={`${isVisible === true ? "brightness-50" : ""} ${
+                    className={`${isVisible === true ? "pointer-events-none blur-[2px] brightness-50" : ""} ${
                         storedData.style === "1"
                             ? "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-400 via-white to-blue-600"
                             : storedData.style === "2"
