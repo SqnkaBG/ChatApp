@@ -15,8 +15,9 @@ export default function Test() {
 
         <div className=" w-screen flex-col items-center justify-center h-[92.6%] bg-gray-300">
             <SearchBar />
-            <div className="flex h-full w-full flex-col bg-gray-300 ">
-                <div className="flex flex-col overflow-y-auto h-[90%] w-[40%] border border-red-500">
+            <div className="flex h-full w-full flex-row bg-gray-300 ">
+                <div className="flex flex-col h-[95%] w-[50%] border border-blue-500">
+                <div className="flex flex-col overflow-y-auto h-full w-full border border-red-500">
                 {contacts.map((el, index) => (
                     <div
                         key={index}
@@ -32,10 +33,16 @@ export default function Test() {
                             <h1>{el.name}</h1>
                     </div>
                 ))}
+                
                 </div>
-                <button className="rounded flex bg-black h-[3%] w-[4%]">
+                <button className="rounded flex bg-black h-[5%] w-[12%]">
                     Add new
                 </button>
+               
+              </div> 
+              <div className="flex flex-col bg-gray-500 h-[100%] w-[100%]">
+
+            </div>
             </div>
         </div>
     </div>
