@@ -3,60 +3,42 @@
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
 import { useEffect, useRef, useState } from "react";
+import { AiOutlineMessage } from "react-icons/ai";
+import Cat from "@/app/Images/cat-circle.png";
+import Image from "next/image";
+import contacts from "./contacts.json"
 
 export default function Test() {
-    const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(
-        null
-    );
-    const selectedImageRef = useRef<HTMLImageElement | null>(null);
-
-    const imageOptions = [
-        "/Images/cat-circle.png",
-        "/Images/dog-circle.png",
-        "/Images/cat-circle2.png",
-    ];
-    useEffect(() => {
-        const savedImage = localStorage.getItem("selectedImage");
-        if (savedImage) {
-            setSelectedImageUrl(savedImage);
-        }
-    }, []);
-
-    // Handle image click, updating state and saving to localStorage
-    const handleImageClick = (imageUrl: string) => {
-        setSelectedImageUrl(imageUrl); // Update the state with the selected image URL
-        localStorage.setItem("selectedImage", imageUrl); // Save the selected image to localStorage
-    };
     return (
-        <div className="flex h-screen w-screen flex-wrap">
-            <Sidebar />
-            <SearchBar />
-            <div className="image-selection mx-auto mt-8 max-w-lg text-center">
-                <h2 className="mb-4 text-2xl font-semibold">Select an Image</h2>
-                <div className="mb-4 grid grid-cols-3 gap-4">
-                    {imageOptions.map((imageUrl) => (
-                        <img
-                            key={imageUrl}
-                            src={imageUrl}
-                            alt={imageUrl}
-                            className="image-option transform cursor-pointer rounded-lg shadow-lg transition-transform hover:scale-110"
-                            onClick={() => handleImageClick(imageUrl)} // Set the selected image on click
-                        />
-                    ))}
-                </div>
+        <div className="g-white flex h-screen max-h-screen w-full flex-grow">
+        <Sidebar />
 
-                <div>
-                    <p className="mb-2 text-lg font-medium">Selected Image:</p>
-                    {selectedImageUrl && (
-                        <img
-                            ref={selectedImageRef}
-                            src={selectedImageUrl}
-                            alt="Selected Image"
-                            className="mx-auto max-w-[200px] rounded-lg shadow-xl"
-                        />
-                    )}
+        <div className=" w-screen flex-col items-center justify-center h-[92.6%] bg-gray-300">
+            <SearchBar />
+            <div className="flex h-full w-full flex-col bg-gray-300 ">
+                <div className="flex flex-col overflow-y-auto h-[90%] w-[40%] border border-red-500">
+                {contacts.map((el, index) => (
+                    <div
+                        key={index}
+                        className="flex flex-row border border-green-500 text-black"
+                        >
+                            <Image
+                                src={Cat}
+                                alt="Profile Picture"
+                                width={50}
+                                height={50}
+                                className="rounded-full object-cover"
+                            />
+                            <h1>{el.name}</h1>
+                    </div>
+                ))}
                 </div>
+                <button className="rounded flex bg-black h-[3%] w-[4%]">
+                    Add new
+                </button>
             </div>
         </div>
-    );
+    </div>
+    )
+    
 }
