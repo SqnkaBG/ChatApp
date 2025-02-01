@@ -5,6 +5,7 @@ import Sidebar from "@/components/sidebar";
 import Cat from "@/public/Images/cat-circle.png";
 import Cat2 from "@/public/Images/cat-circle2.png";
 import Dog from "@/public/Images/dog-circle.png";
+import Dog2 from "@/public/Images/dog2-circle.png";
 import Fish from "@/public/Images/fish-circle.png";
 import Rat from "@/public/Images/rat-circle.png";
 import Image from "next/image";
@@ -13,13 +14,14 @@ import { FaPencilAlt } from "react-icons/fa";
 
 export default function Account() {
     const [style, setStyle] = useState("1");
+    const images = [Cat.src, Cat2.src, Rat.src, Dog.src, Dog2.src, Fish.src];
     const [imageSrc, setImageSrc] = useState<string>(Rat.src);
     const [isVisible, setIsVisible] = useState(false);
     const [username, setUsername] = useState<string>("");
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
     const [telNumber, SetTelNumber] = useState<string>("");
-    const images = [Cat.src, Cat2.src, Rat.src, Dog.src, Fish.src];
+
     const [storedData, setStoredData] = useState<{
         username: string | null;
         firstName: string | null;
@@ -117,7 +119,7 @@ export default function Account() {
                 <div
                     className={`${
                         isVisible === true ? "z-10 block" : "hidden"
-                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-col justify-center overflow-auto rounded-xl bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[32%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row lg:space-x-4`}
+                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-row flex-wrap justify-center rounded-xl bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-nowrap lg:items-center lg:space-x-5`}
                 >
                     {Array.from({ length: images.length }, (_, index) => {
                         return (
@@ -131,7 +133,7 @@ export default function Account() {
                                 alt="pfp"
                                 height={90}
                                 width={90}
-                                className="object-scale-down"
+                                className="m-[2%] object-scale-down lg:m-0"
                             />
                         );
                     })}
