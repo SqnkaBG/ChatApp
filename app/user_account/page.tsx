@@ -19,6 +19,7 @@ export default function Account() {
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
     const [telNumber, SetTelNumber] = useState<string>("");
+    const images = [Cat.src, Cat2.src, Rat.src, Dog.src, Fish.src];
     const [storedData, setStoredData] = useState<{
         username: string | null;
         firstName: string | null;
@@ -116,64 +117,25 @@ export default function Account() {
                 <div
                     className={`${
                         isVisible === true ? "z-10 block" : "hidden"
-                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-col overflow-auto rounded-md bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[30%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row lg:space-x-3`}
+                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-col overflow-auto rounded-md bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row lg:space-x-3`}
                 >
                     {/*toz div trqbva da se napravi full h i w za da ne mogat da se klikat elementi ot div-a zad nego*/}
-                    <Image
-                        onClick={() => {
-                            handleClick(Cat.src);
-                            setIsVisible(!isVisible);
-                        }}
-                        src={Cat.src}
-                        alt="pfp"
-                        height={90}
-                        width={90}
-                        className="object-scale-down"
-                    />
-                    <Image
-                        onClick={() => {
-                            handleClick(Cat2.src);
-                            setIsVisible(!isVisible);
-                        }}
-                        src={Cat2.src}
-                        alt="pfp"
-                        height={90}
-                        width={90}
-                        className="object-scale-down"
-                    />
-                    <Image
-                        onClick={() => {
-                            handleClick(Dog.src);
-                            setIsVisible(!isVisible);
-                        }}
-                        src={Dog.src}
-                        alt="pfp"
-                        height={90}
-                        width={90}
-                        className="object-scale-down"
-                    />
-                    <Image
-                        onClick={() => {
-                            handleClick(Fish.src);
-                            setIsVisible(!isVisible);
-                        }}
-                        src={Fish.src}
-                        alt="pfp"
-                        height={90}
-                        width={90}
-                        className="object-scale-down"
-                    />
-                    <Image
-                        onClick={() => {
-                            handleClick(Rat.src);
-                            setIsVisible(!isVisible);
-                        }}
-                        src={Rat.src}
-                        alt="pfp"
-                        height={90}
-                        width={90}
-                        className="object-scale-down"
-                    />
+                    {Array.from({ length: images.length }, (_, index) => {
+                        return (
+                            <Image
+                                key={index}
+                                onClick={() => {
+                                    handleClick(images[index]);
+                                    setIsVisible(!isVisible);
+                                }}
+                                src={images[index]}
+                                alt="pfp"
+                                height={90}
+                                width={90}
+                                className="object-scale-down"
+                            />
+                        );
+                    })}
                 </div>
                 <form
                     onSubmit={handleSubmit}

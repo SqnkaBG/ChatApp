@@ -16,7 +16,7 @@ const config: Config = {
             boxShadow: {
                 "custom-green": "3px 4px 0px 1px rgb(39, 129, 36)",
                 "custom-red": "3px 4px 0px 1px rgb(124, 3, 3)",
-                "custom-blue": "3px 4px 0px 1px rgb(39, 102, 236)",
+                "custom-blue": "3px 4px 0px 1px rgb(61, 74, 255)",
                 "custom-peachy": "3px 4px 0px 1px rgb(233, 180, 149)",
                 "custom-inset": "inset 2px 4px 7px 2px #444343",
                 solid: "0 4px 8px rgba(0, 0, 0, 0.8)",
