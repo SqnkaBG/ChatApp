@@ -54,7 +54,7 @@ export default function Settings() {
                     storedData === "1"
                         ? "bg-gradient-to-r from-blue-400 to-blue-600"
                         : storedData === "2"
-                          ? "bg-gradient-to-br from-[#374151] via-[#f43f5e] to-[#fb923c]"
+                          ? "bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300"
                           : storedData === "3"
                             ? "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
                             : storedData === "4"
@@ -225,7 +225,7 @@ export default function Settings() {
                                               : storedData === "3"
                                                 ? "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-300"
                                                 : storedData === "4"
-                                                  ? "bg-yellow-500 text-black hover:bg-yellow-600 focus:ring-yellow-300"
+                                                  ? "bg-peach hover:bg-light-peach text-black focus:ring-yellow-300"
                                                   : ""
                                     } mt-6 rounded-xl px-6 py-3 text-xl font-semibold shadow-lg focus:outline-none focus:ring-4`}
                                 >

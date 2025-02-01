@@ -3,12 +3,18 @@
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
 import Cat from "@/public/Images/cat-circle.png";
+import Cat2 from "@/public/Images/cat-circle2.png";
+import Dog from "@/public/Images/dog-circle.png";
+import Fish from "@/public/Images/fish-circle.png";
+import Rat from "@/public/Images/rat-circle.png";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaPencilAlt } from "react-icons/fa";
 
 export default function Account() {
-    const [imageSrc, setImageSrc] = useState<string>(Cat.src);
+    const [style, setStyle] = useState("1");
+    const [imageSrc, setImageSrc] = useState<string>(Rat.src);
+    const [isVisible, setIsVisible] = useState(false);
     const [username, setUsername] = useState<string>("");
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
@@ -18,11 +24,15 @@ export default function Account() {
         firstName: string | null;
         lastName: string | null;
         telNumber: string | null;
+        imageSrc: string | null;
+        style: string | null;
     }>({
         username: null,
         firstName: null,
         lastName: null,
         telNumber: null,
+        imageSrc: null,
+        style: null,
     });
 
     useEffect(() => {
@@ -32,31 +42,40 @@ export default function Account() {
                 const storedFirstName = localStorage.getItem("firstName");
                 const storedLastName = localStorage.getItem("lastName");
                 const storedTelNumber = localStorage.getItem("telNumber");
+                const storedImg = localStorage.getItem("pfp");
+                const storedStyle = localStorage.getItem("style");
                 setStoredData({
                     username: storedUsername,
                     firstName: storedFirstName,
                     lastName: storedLastName,
                     telNumber: storedTelNumber,
+                    imageSrc: storedImg,
+                    style: storedStyle,
                 });
+                if (style) {
+                    setStyle(style);
+                }
+                if (storedImg) {
+                    setImageSrc(storedImg); //updates source if it finds one in localstorage
+                }
             } catch (error) {
                 console.error("Error accessing localStorage:", error);
             }
         }
     }, []);
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const file = e.target.files?.[0];
-        if (file) {
-            setImageSrc(URL.createObjectURL(file));
-        }
-    }
+    const handleClick = (src: React.SetStateAction<string>) => {
+        setImageSrc(src);
+    };
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const dataHasChanged =
             username !== storedData.username ||
             firstName !== storedData.firstName ||
             lastName !== storedData.lastName ||
-            telNumber !== storedData.telNumber;
+            telNumber !== storedData.telNumber ||
+            style !== storedData.style ||
+            imageSrc !== storedData.imageSrc;
 
         if (dataHasChanged) {
             if (typeof window !== "undefined") {
@@ -66,11 +85,14 @@ export default function Account() {
                     if (firstName) localStorage.setItem("firstName", firstName);
                     if (lastName) localStorage.setItem("lastName", lastName);
                     if (telNumber) localStorage.setItem("telNumber", telNumber);
+                    if (imageSrc) localStorage.setItem("pfp", imageSrc);
                     setStoredData({
                         username,
                         firstName,
                         lastName,
                         telNumber,
+                        imageSrc,
+                        style,
                     });
 
                     alert("Data saved successfully!");
@@ -88,89 +110,207 @@ export default function Account() {
     return (
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
-            <div className="h-[96%] w-full flex-col items-center justify-center bg-teal-700 sm:w-[95.5%] md:h-[99%]">
+
+            <div className="h-[96%] w-full flex-col items-center justify-center sm:w-[95.5%] md:h-[99%]">
                 <SearchBar />
+                <div
+                    className={`${
+                        isVisible === true ? "z-10 block" : "hidden"
+                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-col overflow-auto rounded-md bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[30%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row lg:space-x-3`}
+                >
+                    {/*toz div trqbva da se napravi full h i w za da ne mogat da se klikat elementi ot div-a zad nego*/}
+                    <Image
+                        onClick={() => {
+                            handleClick(Cat.src);
+                            setIsVisible(!isVisible);
+                        }}
+                        src={Cat.src}
+                        alt="pfp"
+                        height={90}
+                        width={90}
+                        className="object-scale-down"
+                    />
+                    <Image
+                        onClick={() => {
+                            handleClick(Cat2.src);
+                            setIsVisible(!isVisible);
+                        }}
+                        src={Cat2.src}
+                        alt="pfp"
+                        height={90}
+                        width={90}
+                        className="object-scale-down"
+                    />
+                    <Image
+                        onClick={() => {
+                            handleClick(Dog.src);
+                            setIsVisible(!isVisible);
+                        }}
+                        src={Dog.src}
+                        alt="pfp"
+                        height={90}
+                        width={90}
+                        className="object-scale-down"
+                    />
+                    <Image
+                        onClick={() => {
+                            handleClick(Fish.src);
+                            setIsVisible(!isVisible);
+                        }}
+                        src={Fish.src}
+                        alt="pfp"
+                        height={90}
+                        width={90}
+                        className="object-scale-down"
+                    />
+                    <Image
+                        onClick={() => {
+                            handleClick(Rat.src);
+                            setIsVisible(!isVisible);
+                        }}
+                        src={Rat.src}
+                        alt="pfp"
+                        height={90}
+                        width={90}
+                        className="object-scale-down"
+                    />
+                </div>
                 <form
                     onSubmit={handleSubmit}
-                    className="b-0 h-f flex h-[93%] w-[100%] flex-col items-center space-y-1 overflow-y-auto bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-600 via-blue-200 to-cyan-600 pb-[1.5%]"
+                    className={`${isVisible === true ? "brightness-50" : ""} ${
+                        storedData.style === "1"
+                            ? "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-400 via-white to-blue-600"
+                            : storedData.style === "2"
+                              ? "bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300"
+                              : storedData.style === "3"
+                                ? "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
+                                : storedData.style === "4"
+                                  ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
+                                  : ""
+                    } b-0 h-f flex h-[93%] w-[100%] flex-col items-center space-y-1 overflow-y-auto pb-[1.5%] text-black`}
                 >
-                    <div className="mb-[5%] mt-[5%] flex h-[13%] w-[40%] flex-row items-center justify-center lg:mb-[1%] lg:mt-0 lg:h-[18%]">
+                    <div className="mb-[7%] mt-[5%] flex h-[13%] w-[75%] flex-row items-center justify-center lg:mb-[1%] lg:mt-0 lg:h-[18%] lg:w-[40%] lg:pb-0">
                         <Image
                             src={imageSrc}
                             alt="pfp"
-                            height={0}
+                            height={90}
                             width={90}
                             className="lg:w-100 mt-[4%] drop-shadow-solid"
                         />
                         <label
-                            htmlFor="image-upload"
-                            className="mb-[38%] cursor-pointer text-gray-200 hover:text-gray-400 md:mb-[24%] lg:mb-[6%]"
+                            onClick={() => setIsVisible(!isVisible)}
+                            className={`${storedData.style === "4" || storedData.style === "2" ? "text-gray-800 hover:text-black" : "text-gray-200 hover:text-gray-400"} mb-[25%] cursor-pointer md:mb-[10%] lg:mb-[6%]`}
+                            title="Click the 'Save' button to change avatar"
                         >
                             <FaPencilAlt className="" />
                         </label>
-                        <input
-                            type="file"
-                            id="image-upload"
-                            accept="image/*"
-                            onChange={handleChange}
-                            className="hidden"
-                        />
-                        <h1 className="ml-[2%] mt-[4%] object-scale-down text-center text-4xl font-bold text-black">
+
+                        <h1
+                            className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} ml-[2%] mt-[4%] overflow-auto text-center text-3xl font-bold md:text-4xl lg:ml-[0.5%] lg:overflow-visible`}
+                        >
                             {storedData.username || "Not set yet"}
                         </h1>
                     </div>
-                    <hr className="w-[70%] border-[#127d46] lg:w-[40%]" />
+                    <hr
+                        className={`${
+                            storedData.style === "1"
+                                ? "border-[#127d46]"
+                                : storedData.style === "2"
+                                  ? "border-gray-800"
+                                  : storedData.style === "3"
+                                    ? "border-blue-700"
+                                    : storedData.style === "4"
+                                      ? "border-peach"
+                                      : ""
+                        } w-[70%] lg:w-[40%]`}
+                    />
                     <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-[50%]">
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className="text-black lg:text-lg">
+                            <label
+                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
+                            >
                                 Username
                             </label>
                             <input
                                 type="text"
                                 id="username"
                                 value={username}
-                                pattern="\[A-Za-z0-9]{3,19}"
+                                pattern="[A-Za-z0-9]{3,19}"
                                 placeholder={
                                     storedData.username || "Create Username"
                                 }
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black shadow-custom outline-none"
+                                className={`${
+                                    storedData.style === "1"
+                                        ? "shadow-custom-green border-cyan-700"
+                                        : storedData.style === "2"
+                                          ? "shadow-custom-red border-gray-800"
+                                          : storedData.style === "3"
+                                            ? "shadow-custom-blue border-purple-700"
+                                            : storedData.style === "4"
+                                              ? "shadow-custom-peachy border-orange-700"
+                                              : ""
+                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className="text-black lg:text-lg">
+                            <label
+                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
+                            >
                                 First Name
                             </label>
                             <input
                                 type="text"
-                                id="username"
                                 value={firstName}
-                                pattern="\[A-Z]{1}[a-z]{3,19}"
+                                pattern="[A-Z]{1}[a-z]{3,19}"
                                 placeholder={
                                     storedData.firstName || "Create First Name"
                                 }
                                 onChange={(e) => setFirstName(e.target.value)}
-                                className="h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black shadow-custom outline-none"
+                                className={`${
+                                    storedData.style === "1"
+                                        ? "shadow-custom-green border-cyan-700"
+                                        : storedData.style === "2"
+                                          ? "shadow-custom-red border-gray-800"
+                                          : storedData.style === "3"
+                                            ? "shadow-custom-blue border-purple-700"
+                                            : storedData.style === "4"
+                                              ? "shadow-custom-peachy border-orange-700"
+                                              : ""
+                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className="text-black lg:text-lg">
+                            <label
+                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
+                            >
                                 Last Name
                             </label>
                             <input
                                 type="text"
-                                id="username"
                                 value={lastName}
-                                pattern="\[A-Z]{1}[a-z]{3,19}"
+                                pattern="[A-Z]{1}[a-z]{3,19}"
                                 placeholder={
                                     storedData.lastName || "Create Last Name"
                                 }
                                 onChange={(e) => setLastName(e.target.value)}
-                                className="h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black shadow-custom outline-none"
+                                className={`${
+                                    storedData.style === "1"
+                                        ? "shadow-custom-green border-cyan-700"
+                                        : storedData.style === "2"
+                                          ? "shadow-custom-red border-gray-800"
+                                          : storedData.style === "3"
+                                            ? "shadow-custom-blue border-purple-700"
+                                            : storedData.style === "4"
+                                              ? "shadow-custom-peachy border-orange-700"
+                                              : ""
+                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
-                        <div className="mr-[10%] mr-[4.3%] flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className="text-black lg:text-lg">
+                        <div className="mr-[4.1%] flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
+                            <label
+                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
+                            >
                                 Phone Number
                             </label>
                             <input
@@ -183,15 +323,47 @@ export default function Account() {
                                     storedData.telNumber ||
                                     "Create telephone number"
                                 }
-                                className="h-8 w-[50%] rounded border-2 border-solid border-cyan-700 pl-[0.5%] font-serif text-base text-black shadow-custom outline-none"
+                                className={`${
+                                    storedData.style === "1"
+                                        ? "shadow-custom-green border-cyan-700"
+                                        : storedData.style === "2"
+                                          ? "shadow-custom-red border-gray-800"
+                                          : storedData.style === "3"
+                                            ? "shadow-custom-blue border-purple-700"
+                                            : storedData.style === "4"
+                                              ? "shadow-custom-peachy border-orange-700"
+                                              : ""
+                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                     </div>
-                    <hr className="w-[70%] border-[#127d46] lg:w-[40%]" />
+                    <hr
+                        className={`${
+                            storedData.style === "1"
+                                ? "border-[#127d46]"
+                                : storedData.style === "2"
+                                  ? "border-gray-800"
+                                  : storedData.style === "3"
+                                    ? "border-blue-700"
+                                    : storedData.style === "4"
+                                      ? "border-peach"
+                                      : ""
+                        } w-[70%] lg:w-[40%]`}
+                    />
                     <div className="ml-[4%] flex h-[10%] w-[20%] flex-row justify-center pt-[5%] lg:ml-[1%] lg:pt-[1%]">
                         <button
                             type="submit"
-                            className="mt-[5%] h-10 cursor-pointer rounded-lg border-b-[4px] border-cyan-800 bg-cyan-700 px-6 py-2 text-white transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[30%]"
+                            className={`${
+                                storedData.style === "1"
+                                    ? "border-green-800 bg-green-700 text-white"
+                                    : storedData.style === "2"
+                                      ? "border-red-900 bg-red-800 text-black"
+                                      : storedData.style === "3"
+                                        ? "border-blue-800 bg-blue-700 text-white"
+                                        : storedData.style === "4"
+                                          ? "border-peach bg-light-peach text-black"
+                                          : ""
+                            } m-[-8%] h-10 cursor-pointer rounded-lg border-b-[4px] px-6 py-2 transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[30%]`}
                         >
                             Save{" "}
                         </button>

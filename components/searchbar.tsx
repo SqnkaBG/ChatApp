@@ -30,9 +30,9 @@ const SearchBar = () => {
                       : storedData === "3"
                         ? "bg-gradient-to-t from-blue-700 to-blue-500"
                         : storedData === "4"
-                          ? "bg-gradient-to-t from-yellow-500 to-amber-300"
+                          ? "bg-light-peach"
                           : ""
-            } flex h-[10%] w-[100%] flex-wrap items-center justify-center md:h-[8%] md:w-[100%]`}
+            } sticky top-0 z-10 flex h-[10%] w-[100%] flex-wrap items-center justify-center md:h-[8%] md:w-[100%]`}
         >
             <div
                 className={`${

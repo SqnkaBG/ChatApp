@@ -34,7 +34,7 @@ const Sidebar = () => {
                       : storedData === "3"
                         ? "bg-cyan-500"
                         : storedData === "4"
-                          ? "bg-amber-400"
+                          ? "bg-peach"
                           : ""
             } fixed bottom-0 flex h-[10%] w-full flex-row items-center justify-center sm:w-[4.5%] md:static md:h-full md:w-[4.5%] md:flex-col`}
         >
