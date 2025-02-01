@@ -8,9 +8,27 @@ export default function Settings() {
     const [style, setStyle] = useState("1");
     const [storedData, setStoredData] = useState<string>("1");
     const [selectValue, setSelectValue] = useState<string>(storedData); //this is the value of the select elem.
+    const [bg, setBg] = useState<string>(storedData); //this is the value of the select elem.
+
+    const setColors = () => {
+        if (storedData === "1") {
+            setBg("bg-gradient-to-r from-blue-400 to-blue-600");
+        } else if (storedData === "2") {
+            setBg("bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300");
+        } else if (storedData === "3") {
+            setBg(
+                "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
+            );
+        } else if (storedData === "4") {
+            setBg(
+                "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
+            );
+        }
+    };
 
     useEffect(() => {
         if (typeof window !== "undefined") {
+            setColors();
             try {
                 const storedStyle = localStorage.getItem("style");
                 if (storedStyle) {
@@ -24,7 +42,7 @@ export default function Settings() {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, []);
+    }, [style, storedData]);
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const dataHasChanged = style !== storedData;
@@ -50,17 +68,7 @@ export default function Settings() {
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
             <div
-                className={`${
-                    storedData === "1"
-                        ? "bg-gradient-to-r from-blue-400 to-blue-600"
-                        : storedData === "2"
-                          ? "bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300"
-                          : storedData === "3"
-                            ? "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
-                            : storedData === "4"
-                              ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
-                              : ""
-                } h-full w-full flex-col items-center justify-center overflow-y-auto md:w-[95.5%]`}
+                className={` ${bg} h-full w-full flex-col items-center justify-center overflow-y-auto md:w-[95.5%]`}
             >
                 <SearchBar />
                 <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">

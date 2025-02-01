@@ -21,7 +21,9 @@ export default function Account() {
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
     const [telNumber, SetTelNumber] = useState<string>("");
-
+    const [shadow, setShadow] = useState<string>(""); //shadows for the input element
+    const [bg, setBg] = useState<string>(""); //background
+    const [border, setBorder] = useState<string>("");
     const [storedData, setStoredData] = useState<{
         username: string | null;
         firstName: string | null;
@@ -38,15 +40,46 @@ export default function Account() {
         style: null,
     });
 
+    const setColors = () => {
+        if (style === "1") {
+            setShadow("shadow-custom-green border-cyan-700");
+            setBg(
+                "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-400 via-white to-blue-600"
+            );
+            setBorder("border-[#127d46]");
+        } else if (style === "2") {
+            setShadow("shadow-custom-red border-gray-800");
+            setBg("bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300");
+            setBorder("border-gray-800");
+        } else if (storedData.style === "3") {
+            setShadow("shadow-custom-blue border-purple-700");
+            setBg(
+                "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
+            );
+            setBorder("border-blue-700");
+        } else if (style === "4") {
+            setShadow("shadow-custom-peachy border-orange-700");
+            setBg(
+                "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
+            );
+            setBorder("border-peach");
+        }
+    };
+
     useEffect(() => {
         if (typeof window !== "undefined") {
+            setColors();
             try {
                 const storedUsername = localStorage.getItem("username");
                 const storedFirstName = localStorage.getItem("firstName");
                 const storedLastName = localStorage.getItem("lastName");
                 const storedTelNumber = localStorage.getItem("telNumber");
                 const storedImg = localStorage.getItem("pfp");
-                const storedStyle = localStorage.getItem("style");
+                let storedStyle = localStorage.getItem("style");
+                if (!storedStyle) {
+                    storedStyle = "1"; // Default value if not set in localStorage
+                    localStorage.setItem("style", storedStyle);
+                }
                 setStoredData({
                     username: storedUsername,
                     firstName: storedFirstName,
@@ -55,8 +88,8 @@ export default function Account() {
                     imageSrc: storedImg,
                     style: storedStyle,
                 });
-                if (style) {
-                    setStyle(style);
+                if (storedStyle) {
+                    setStyle(storedStyle);
                 }
                 if (storedImg) {
                     setImageSrc(storedImg); //updates source if it finds one in localstorage
@@ -65,7 +98,7 @@ export default function Account() {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, []);
+    }, [style, storedData.style]);
 
     const handleClick = (src: React.SetStateAction<string>) => {
         setImageSrc(src);
@@ -140,17 +173,7 @@ export default function Account() {
                 </div>
                 <form
                     onSubmit={handleSubmit}
-                    className={`${isVisible === true ? "pointer-events-none blur-[2px] brightness-50" : ""} ${
-                        storedData.style === "1"
-                            ? "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-400 via-white to-blue-600"
-                            : storedData.style === "2"
-                              ? "bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300"
-                              : storedData.style === "3"
-                                ? "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
-                                : storedData.style === "4"
-                                  ? "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
-                                  : ""
-                    } b-0 h-f flex h-[93%] w-[100%] flex-col items-center space-y-1 overflow-y-auto pb-[1.5%] text-black`}
+                    className={`${isVisible === true ? "pointer-events-none blur-[2px] brightness-50" : ""} ${bg} b-0 h-f flex h-[93%] w-[100%] flex-col items-center space-y-1 overflow-y-auto pb-[1.5%] text-black`}
                 >
                     <div className="mb-[7%] mt-[5%] flex h-[13%] w-[75%] flex-row items-center justify-center lg:mb-[1%] lg:mt-0 lg:h-[18%] lg:w-[40%] lg:pb-0">
                         <Image
@@ -174,19 +197,7 @@ export default function Account() {
                             {storedData.username || "Not set yet"}
                         </h1>
                     </div>
-                    <hr
-                        className={`${
-                            storedData.style === "1"
-                                ? "border-[#127d46]"
-                                : storedData.style === "2"
-                                  ? "border-gray-800"
-                                  : storedData.style === "3"
-                                    ? "border-blue-700"
-                                    : storedData.style === "4"
-                                      ? "border-peach"
-                                      : ""
-                        } w-[70%] lg:w-[40%]`}
-                    />
+                    <hr className={`${border} w-[70%] lg:w-[40%]`} />
                     <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-[50%]">
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label
@@ -203,17 +214,7 @@ export default function Account() {
                                     storedData.username || "Create Username"
                                 }
                                 onChange={(e) => setUsername(e.target.value)}
-                                className={`${
-                                    storedData.style === "1"
-                                        ? "shadow-custom-green border-cyan-700"
-                                        : storedData.style === "2"
-                                          ? "shadow-custom-red border-gray-800"
-                                          : storedData.style === "3"
-                                            ? "shadow-custom-blue border-purple-700"
-                                            : storedData.style === "4"
-                                              ? "shadow-custom-peachy border-orange-700"
-                                              : ""
-                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
@@ -230,17 +231,7 @@ export default function Account() {
                                     storedData.firstName || "Create First Name"
                                 }
                                 onChange={(e) => setFirstName(e.target.value)}
-                                className={`${
-                                    storedData.style === "1"
-                                        ? "shadow-custom-green border-cyan-700"
-                                        : storedData.style === "2"
-                                          ? "shadow-custom-red border-gray-800"
-                                          : storedData.style === "3"
-                                            ? "shadow-custom-blue border-purple-700"
-                                            : storedData.style === "4"
-                                              ? "shadow-custom-peachy border-orange-700"
-                                              : ""
-                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
@@ -257,17 +248,7 @@ export default function Account() {
                                     storedData.lastName || "Create Last Name"
                                 }
                                 onChange={(e) => setLastName(e.target.value)}
-                                className={`${
-                                    storedData.style === "1"
-                                        ? "shadow-custom-green border-cyan-700"
-                                        : storedData.style === "2"
-                                          ? "shadow-custom-red border-gray-800"
-                                          : storedData.style === "3"
-                                            ? "shadow-custom-blue border-purple-700"
-                                            : storedData.style === "4"
-                                              ? "shadow-custom-peachy border-orange-700"
-                                              : ""
-                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                         <div className="mr-[4.1%] flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
@@ -286,33 +267,11 @@ export default function Account() {
                                     storedData.telNumber ||
                                     "Create telephone number"
                                 }
-                                className={`${
-                                    storedData.style === "1"
-                                        ? "shadow-custom-green border-cyan-700"
-                                        : storedData.style === "2"
-                                          ? "shadow-custom-red border-gray-800"
-                                          : storedData.style === "3"
-                                            ? "shadow-custom-blue border-purple-700"
-                                            : storedData.style === "4"
-                                              ? "shadow-custom-peachy border-orange-700"
-                                              : ""
-                                } "h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                     </div>
-                    <hr
-                        className={`${
-                            storedData.style === "1"
-                                ? "border-[#127d46]"
-                                : storedData.style === "2"
-                                  ? "border-gray-800"
-                                  : storedData.style === "3"
-                                    ? "border-blue-700"
-                                    : storedData.style === "4"
-                                      ? "border-peach"
-                                      : ""
-                        } w-[70%] lg:w-[40%]`}
-                    />
+                    <hr className={`${border} w-[70%] lg:w-[40%]`} />
                     <div className="ml-[4%] flex h-[10%] w-[20%] flex-row justify-center pt-[5%] lg:ml-[1%] lg:pt-[1%]">
                         <button
                             type="submit"
