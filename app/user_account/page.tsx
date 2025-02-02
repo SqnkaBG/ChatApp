@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/button";
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
 import Cat from "@/public/Images/cat-circle.png";
@@ -24,6 +25,7 @@ export default function Account() {
     const [shadow, setShadow] = useState<string>(""); //shadows for the input element
     const [bg, setBg] = useState<string>(""); //background
     const [border, setBorder] = useState<string>("");
+    const [text, setText] = useState<string>("");
     const [storedData, setStoredData] = useState<{
         username: string | null;
         firstName: string | null;
@@ -41,28 +43,32 @@ export default function Account() {
     });
 
     const setColors = () => {
-        if (style === "1") {
-            setShadow("shadow-custom-green border-cyan-700");
-            setBg(
-                "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-400 via-white to-blue-600"
-            );
-            setBorder("border-[#127d46]");
-        } else if (style === "2") {
+        if (style === "2") {
             setShadow("shadow-custom-red border-gray-800");
             setBg("bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300");
             setBorder("border-gray-800");
+            setText("text-black");
         } else if (storedData.style === "3") {
             setShadow("shadow-custom-blue border-purple-700");
             setBg(
                 "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
             );
             setBorder("border-blue-700");
+            setText("text-white");
         } else if (style === "4") {
             setShadow("shadow-custom-peachy border-orange-700");
             setBg(
                 "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
             );
             setBorder("border-peach");
+            setText("text-black");
+        } else {
+            setShadow("shadow-custom-green border-cyan-700");
+            setBg(
+                "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-400 via-white to-blue-600"
+            );
+            setBorder("border-[#127d46]");
+            setText("text-white");
         }
     };
 
@@ -192,7 +198,7 @@ export default function Account() {
                         </label>
 
                         <h1
-                            className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} ml-[2%] mt-[4%] overflow-auto text-center text-3xl font-bold md:text-4xl lg:ml-[0.5%] lg:overflow-visible`}
+                            className={`${text} ml-[2%] mt-[4%] overflow-auto text-center text-3xl font-bold md:text-4xl lg:ml-[0.5%] lg:overflow-visible`}
                         >
                             {storedData.username || "Not set yet"}
                         </h1>
@@ -200,9 +206,7 @@ export default function Account() {
                     <hr className={`${border} w-[70%] lg:w-[40%]`} />
                     <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-[50%]">
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label
-                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
-                            >
+                            <label className={`${text} lg:text-lg`}>
                                 Username
                             </label>
                             <input
@@ -218,9 +222,7 @@ export default function Account() {
                             />
                         </div>
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label
-                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
-                            >
+                            <label className={`${text} lg:text-lg`}>
                                 First Name
                             </label>
                             <input
@@ -235,9 +237,7 @@ export default function Account() {
                             />
                         </div>
                         <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label
-                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
-                            >
+                            <label className={`${text} lg:text-lg`}>
                                 Last Name
                             </label>
                             <input
@@ -252,9 +252,7 @@ export default function Account() {
                             />
                         </div>
                         <div className="mr-[4.1%] flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label
-                                className={`${storedData.style === "4" || storedData.style === "2" ? "text-black" : "text-white"} lg:text-lg`}
-                            >
+                            <label className={`${text} lg:text-lg`}>
                                 Phone Number
                             </label>
                             <input
@@ -271,25 +269,10 @@ export default function Account() {
                             />
                         </div>
                     </div>
-                    <hr className={`${border} w-[70%] lg:w-[40%]`} />
-                    <div className="ml-[4%] flex h-[10%] w-[20%] flex-row justify-center pt-[5%] lg:ml-[1%] lg:pt-[1%]">
-                        <button
-                            type="submit"
-                            className={`${
-                                storedData.style === "1"
-                                    ? "border-green-800 bg-green-700 text-white"
-                                    : storedData.style === "2"
-                                      ? "border-red-900 bg-red-800 text-black"
-                                      : storedData.style === "3"
-                                        ? "border-blue-800 bg-blue-700 text-white"
-                                        : storedData.style === "4"
-                                          ? "border-peach bg-light-peach text-black"
-                                          : ""
-                            } m-[-8%] h-10 cursor-pointer rounded-lg border-b-[4px] px-6 py-2 transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[30%]`}
-                        >
-                            Save{" "}
-                        </button>
-                    </div>
+                    <hr
+                        className={`${border} w-[70%] pb-[4%] lg:w-[40%] lg:pb-[1%]`}
+                    />
+                    <Button />
                 </form>
             </div>
         </div>

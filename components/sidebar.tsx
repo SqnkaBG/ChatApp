@@ -9,10 +9,23 @@ import { VscAccount } from "react-icons/vsc";
 
 const Sidebar = () => {
     const [storedData, setStoredData] = useState<string>("");
+    const [bg, setBg] = useState<string>("");
+    const [icon, setIcon] = useState<string>("");
 
+    const setColors = () => {
+        if (storedData === "2") {
+            setBg("bg-gradient-to-br from-gray-800 to-gray-200");
+        } else if (storedData === "3") {
+            setBg("bg-cyan-500");
+        } else if (storedData === "4") {
+            setBg("bg-peach");
+            setIcon("text-gray-800");
+        } else setBg("bg-[#00cc77]");
+    };
     useEffect(() => {
         if (typeof window !== "undefined") {
             try {
+                setColors();
                 const storedStyle = localStorage.getItem("style");
                 if (storedStyle) {
                     setStoredData(storedStyle);
@@ -23,19 +36,11 @@ const Sidebar = () => {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, []);
+    }, [storedData, setStoredData]);
     return (
         <div
             className={`${
-                storedData === "1"
-                    ? "bg-[#00cc77]"
-                    : storedData === "2"
-                      ? "bg-gradient-to-br from-gray-800 to-gray-200"
-                      : storedData === "3"
-                        ? "bg-cyan-500"
-                        : storedData === "4"
-                          ? "bg-peach"
-                          : ""
+                bg
             } fixed bottom-0 flex h-[10%] w-full flex-row items-center justify-center sm:w-[4.5%] md:static md:h-full md:w-[4.5%] md:flex-col`}
         >
             <div className="flex h-[80%] w-full items-center justify-center md:h-[10%]">
@@ -43,11 +48,7 @@ const Sidebar = () => {
                     className="flex h-full w-full items-center justify-center"
                     href="/"
                 >
-                    <LuHome
-                        className={`${
-                            storedData === "4" ? "text-gray-800" : ""
-                        } h-[80%] w-[80%]`}
-                    />
+                    <LuHome className={`${icon} h-[80%] w-[80%]`} />
                 </a>
             </div>
 
@@ -57,9 +58,7 @@ const Sidebar = () => {
                     href="/friends"
                 >
                     <LiaUserFriendsSolid
-                        className={`${
-                            storedData === "4" ? "text-gray-800" : ""
-                        } h-[80%] w-[80%]`}
+                        className={`${icon} h-[80%] w-[80%]`}
                     />
                 </a>
             </div>
@@ -69,11 +68,7 @@ const Sidebar = () => {
                     className="flex h-full w-full items-center justify-center"
                     href="/dms"
                 >
-                    <FaRegMessage
-                        className={`${
-                            storedData === "4" ? "text-gray-800" : ""
-                        } h-[80%] w-[80%]`}
-                    />
+                    <FaRegMessage className={`${icon} h-[80%] w-[80%]`} />
                 </a>
             </div>
 
@@ -82,11 +77,7 @@ const Sidebar = () => {
                     className="flex h-full w-full items-center justify-center"
                     href="/user_account"
                 >
-                    <VscAccount
-                        className={`${
-                            storedData === "4" ? "text-gray-800" : ""
-                        } h-[80%] w-[80%]`}
-                    />
+                    <VscAccount className={`${icon} h-[80%] w-[80%]`} />
                 </a>
             </div>
 
@@ -95,11 +86,7 @@ const Sidebar = () => {
                     className="flex h-full w-full items-center justify-center"
                     href="/settings"
                 >
-                    <IoSettingsOutline
-                        className={`${
-                            storedData === "4" ? "text-gray-800" : ""
-                        } h-[80%] w-[80%]`}
-                    />
+                    <IoSettingsOutline className={`${icon} h-[80%] w-[80%]`} />
                 </a>
             </div>
         </div>

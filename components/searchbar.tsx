@@ -5,10 +5,29 @@ import { LiaSearchSolid } from "react-icons/lia";
 
 const SearchBar = () => {
     const [storedData, setStoredData] = useState<string>("");
+    const [bg, setBg] = useState<string>("");
+    const [searchBox, setSearchBox] = useState<string>("");
+
+    const setColors = () => {
+        if (storedData === "2") {
+            setBg("bg-gradient-to-b from-[#0f172a] to-[#334155]");
+            setSearchBox("bg-white");
+        } else if (storedData === "3") {
+            setBg("bg-gradient-to-t from-blue-700 to-blue-500");
+            setSearchBox("bg-slate-400");
+        } else if (storedData === "4") {
+            setBg("bg-light-peach");
+            setSearchBox("bg-white");
+        } else {
+            setBg("bg-teal-700");
+            setSearchBox("bg-slate-400");
+        }
+    };
 
     useEffect(() => {
         if (typeof window !== "undefined") {
             try {
+                setColors();
                 const storedStyle = localStorage.getItem("style");
                 if (storedStyle) {
                     setStoredData(storedStyle);
@@ -19,26 +38,16 @@ const SearchBar = () => {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, []);
+    }, [storedData, setStoredData]);
     return (
         <div
             className={`${
-                storedData === "1"
-                    ? "bg-teal-700"
-                    : storedData === "2"
-                      ? "bg-gradient-to-b from-[#0f172a] to-[#334155]"
-                      : storedData === "3"
-                        ? "bg-gradient-to-t from-blue-700 to-blue-500"
-                        : storedData === "4"
-                          ? "bg-light-peach"
-                          : ""
+                bg
             } sticky top-0 z-10 flex h-[10%] w-[100%] flex-wrap items-center justify-center md:h-[8%] md:w-[100%]`}
         >
             <div
                 className={`${
-                    storedData === "2" || storedData === "4"
-                        ? "bg-white"
-                        : "bg-slate-400"
+                    searchBox
                 } flex w-[30%] rounded-md transition-all duration-300 focus-within:w-[80%] hover:w-[80%] active:w-[80%] md:w-[30%] md:focus-within:w-[30%] md:hover:w-[30%] md:active:w-[30%]`}
             >
                 <input

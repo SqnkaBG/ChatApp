@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/button";
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
 import React, { useEffect, useState } from "react";
@@ -9,25 +10,25 @@ export default function Settings() {
     const [storedData, setStoredData] = useState<string>("1");
     const [selectValue, setSelectValue] = useState<string>(storedData); //this is the value of the select elem.
     const [bg, setBg] = useState<string>(storedData); //background colour
-    const [button, setButton] = useState<string>(""); //button colours
+    const [text, setText] = useState<string>("");
 
     const setColors = () => {
-        if (storedData === "1") {
-            setBg("bg-gradient-to-r from-blue-400 to-blue-600");
-            setButton("border-green-800 bg-green-700 text-white");
-        } else if (storedData === "2") {
+        if (storedData === "2") {
             setBg("bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300");
-            setButton("border-red-900 bg-red-800 text-black");
+            setText("text-black");
         } else if (storedData === "3") {
             setBg(
                 "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
             );
-            setButton("border-blue-800 bg-blue-700 text-white");
+            setText("text-white");
         } else if (storedData === "4") {
             setBg(
                 "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
             );
-            setButton("border-peach bg-light-peach text-black");
+            setText("text-black");
+        } else {
+            setBg("bg-gradient-to-r from-blue-400 to-blue-600");
+            setText("text-white");
         }
     };
 
@@ -48,6 +49,7 @@ export default function Settings() {
             }
         }
     }, [style, storedData]);
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const dataHasChanged = style !== storedData;
@@ -79,7 +81,7 @@ export default function Settings() {
                 <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">
                     <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-500">
                         <h1
-                            className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} mt-[2%] flex items-center justify-center text-4xl font-extrabold drop-shadow-lg`}
+                            className={`${text} mt-[2%] flex items-center justify-center text-4xl font-extrabold drop-shadow-lg`}
                         >
                             Change style
                         </h1>
@@ -102,12 +104,12 @@ export default function Settings() {
                             <hr className="my-6 border-gray-400" />
 
                             <h1
-                                className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} drop-shadow-lg" flex items-center justify-center text-4xl font-extrabold`}
+                                className={`${text} drop-shadow-lg" flex items-center justify-center text-4xl font-extrabold`}
                             >
                                 DMS settings
                             </h1>
                             <h2
-                                className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} " mt-[1%] flex items-center justify-center text-xl font-medium`}
+                                className={`${text} " mt-[1%] flex items-center justify-center text-xl font-medium`}
                             >
                                 Upload config from file
                             </h2>
@@ -121,15 +123,13 @@ export default function Settings() {
                             </div>
 
                             <h2
-                                className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} font-medium" mt-[1%] flex items-center justify-center text-xl md:mb-[1%]`}
+                                className={`${text} font-medium" mt-[1%] flex items-center justify-center text-xl md:mb-[1%]`}
                             >
                                 Make a config
                             </h2>
                             <div className="flex flex-col items-center justify-center space-y-4">
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Time Format"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -138,9 +138,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Font"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -150,9 +148,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Font size"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -162,9 +158,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Display Avatars"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -173,9 +167,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Animations"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -184,9 +176,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Enable notifications"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -195,9 +185,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Message Bubbles"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -207,9 +195,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Message Bubble Color"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -217,9 +203,7 @@ export default function Settings() {
                                     </select>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label
-                                        className={`${storedData === "4" || storedData === "2" ? "text-black" : "text-white"} text-lg`}
-                                    >
+                                    <label className={`${text} text-lg`}>
                                         {"Enable custom chat background"}
                                     </label>
                                     <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -227,12 +211,7 @@ export default function Settings() {
                                         <option>No</option>
                                     </select>
                                 </div>
-                                <button
-                                    type="submit"
-                                    className={`${button} m-[-8%] h-10 cursor-pointer rounded-lg border-b-[4px] px-6 py-2 transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[6%]`}
-                                >
-                                    Submit{" "}
-                                </button>
+                                <Button />
                             </div>
                         </form>
                     </div>
