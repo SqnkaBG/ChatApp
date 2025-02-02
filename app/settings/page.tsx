@@ -34,21 +34,22 @@ export default function Settings() {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            setColors();
             try {
                 const storedStyle = localStorage.getItem("style");
                 if (storedStyle) {
                     setStoredData(storedStyle);
-                    setSelectValue(storedStyle);
                 } else {
                     setStoredData("1");
-                    setSelectValue("1");
                 }
+                setColors();
             } catch (error) {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, [style, storedData]);
+    }, [style, storedData, setColors]);
+    useEffect(() => {
+        setSelectValue(storedData); // Update selectValue whenever storedData changes
+    }, [storedData]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -75,7 +76,7 @@ export default function Settings() {
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
             <div
-                className={` ${bg} size-full flex-col items-center justify-center overflow-y-auto md:w-[95.5%]`}
+                className={` ${bg} h-[90%] w-full flex-col items-center justify-center overflow-y-auto md:h-full md:w-[95.5%]`}
             >
                 <SearchBar />
                 <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">

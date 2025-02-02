@@ -27,16 +27,17 @@ export default function Dms() {
             <div className="h-[92%] w-full flex-col items-center justify-center bg-teal-700 md:h-[99%] md:w-[95.5%]">
                 <SearchBar />
 
-                <div className="b-0 flex h-[93%] w-[100%] flex-wrap bg-gray-500">
+                <div className="b-0 flex h-[93%] w-full flex-wrap bg-gray-500">
                     {/*Dm list*/}
-                    <div className="flex h-[100%] w-full justify-start md:w-[18%]">
-                        <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent flex h-[100%] w-[100%] flex-col overflow-y-auto bg-blue-300 pb-[5%] text-black shadow-md md:pb-0">
+                    <div className="flex size-full justify-start md:w-[18%]">
+                        <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent flex size-full flex-col overflow-y-auto bg-blue-300 pb-[5%] text-black shadow-md md:pb-0">
                             {/* Content of the first scrollable box */}
                             {Array.from({ length: 60 }, (_, index) => (
                                 <div
                                     key={index}
-                                    className="flex flex-wrap rounded-xl pl-3 active:bg-blue-200 active:bg-opacity-75"
+                                    className="flex flex-wrap rounded-xl pl-3 active:bg-blue-200/75"
                                 >
+                                    {/*  active:bg-blue-200/75 = active:bg-blue-200, active:bg-opacity-75 */}
                                     <Image
                                         src={Cat}
                                         alt="pfp"
@@ -48,7 +49,8 @@ export default function Dms() {
                                         <h1 className="text-xl font-bold">
                                             User1
                                         </h1>
-                                        <p className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-sm">
+                                        <p className="max-w-full truncate text-sm">
+                                            {/*truncate = overflow-hidden, text-ellipsis, whitespace-nowrap */}
                                             Last message by afafd and some
                                             additional text that will be hidden
                                             if it is too long.
@@ -58,10 +60,10 @@ export default function Dms() {
                             ))}
                         </div>
                     </div>
-                    <div className="hidden h-[100%] w-[82%] flex-col md:flex">
+                    <div className="hidden h-full w-[82%] flex-col md:flex">
                         {/* Chatbox headline */}
-                        <div className="mb-1 flex h-[8%] w-[100%] flex-wrap">
-                            <div className="flex w-[50%] items-center justify-start bg-black pl-[5%] text-green-500">
+                        <div className="mb-1 flex h-[8%] w-full flex-wrap">
+                            <div className="flex w-1/2 items-center justify-start bg-black pl-[5%] text-green-500">
                                 <a className="pr-3">
                                     <Image
                                         src={Cat}
@@ -75,7 +77,7 @@ export default function Dms() {
                                     <p>Status</p>
                                 </div>
                             </div>
-                            <div className="flex w-[50%] items-center justify-end bg-black pr-[2%] text-green-500">
+                            <div className="flex w-1/2 items-center justify-end bg-black pr-[2%] text-green-500">
                                 <div className="p-5">
                                     <a>
                                         <FaPhoneAlt className="text-2xl" />
@@ -94,7 +96,7 @@ export default function Dms() {
                             </div>
                         </div>
 
-                        <div className="flex h-[100%] w-[100%] flex-col overflow-y-auto bg-gray-100 p-4">
+                        <div className="flex size-full flex-col overflow-y-auto bg-gray-100 p-4">
                             {Array.from({ length: 60 }, (_, outerIndex) => (
                                 <div key={outerIndex} className="text-black">
                                     {Me.map((message, meIndex) =>
@@ -125,7 +127,7 @@ export default function Dms() {
                         </div>
 
                         {/* Message box */}
-                        <div className="flex h-[10%] w-[100%] items-center bg-slate-800 p-2">
+                        <div className="flex h-[10%] w-full items-center bg-slate-800 p-2">
                             {/* File attachment icon */}
                             <button
                                 type="button"
@@ -162,7 +164,7 @@ export default function Dms() {
                             <input
                                 type="text"
                                 placeholder="Type a message..."
-                                className="h-10 flex-grow rounded-lg border-none bg-gray-700 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="h-10 grow rounded-lg border-none bg-gray-700 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
 
                             {/* Send button */}

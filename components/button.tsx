@@ -27,7 +27,7 @@ const Button = () => {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, [storedData, setStoredData]);
+    }, [storedData, setStoredData, setColors]);
 
     return (
         <button
