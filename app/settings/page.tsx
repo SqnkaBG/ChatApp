@@ -2,6 +2,7 @@
 
 import Button from "@/components/button";
 import SearchBar from "@/components/searchbar";
+import SelectBox from "@/components/selectbox";
 import Sidebar from "@/components/sidebar";
 import React, { useEffect, useState } from "react";
 
@@ -46,7 +47,7 @@ export default function Settings() {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, [style, storedData, setColors]);
+    }, [style, storedData]);
     useEffect(() => {
         setSelectValue(storedData); // Update selectValue whenever storedData changes
     }, [storedData]);
@@ -87,20 +88,20 @@ export default function Settings() {
                             Change style
                         </h1>
                         <form onSubmit={handleSubmit}>
-                            <div className="mt-3 flex flex-row justify-center">
-                                <select
+                            <div className="ml-[15%] flex justify-center pt-[4%]">
+                                <SelectBox
                                     value={selectValue}
+                                    className="w-[14vw] p-3 text-xl"
                                     onChange={(e) => {
                                         setStyle(e.target.value);
                                         setSelectValue(e.target.value);
                                     }}
-                                    className="mt-[1%] rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <option value="1">Blue/Green</option>
                                     <option value="2">Red/Black</option>
                                     <option value="3">Purple/Blue</option>
                                     <option value="4">Orange/Yellow</option>
-                                </select>
+                                </SelectBox>
                             </div>
                             <hr className="my-6 border-gray-400" />
 
@@ -129,34 +130,56 @@ export default function Settings() {
                                 Make a config
                             </h2>
                             <div className="flex flex-col items-center justify-center space-y-4">
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
+                                <div className="flex w-full items-center justify-center md:pl-[3%]">
                                     <label className={`${text} text-lg`}>
                                         {"Time Format"}
                                     </label>
-                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        <option>12-hour</option>
-                                        <option>24-hour</option>
-                                    </select>
+                                    <div className="ml-[5.8%] mt-[2%] justify-center">
+                                        <SelectBox
+                                            onChange={undefined}
+                                            value={undefined}
+                                            className="h-[2vw] w-[9vw] p-2 text-base"
+                                        >
+                                            <option>12-hour</option>
+                                            <option>24-hour</option>
+                                        </SelectBox>
+                                    </div>
                                 </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
-                                    <label className={`${text} text-lg`}>
+                                <div className="flex w-full flex-row justify-center md:pl-[7%]">
+                                    <label
+                                        className={`${text} mt-[0.2%] text-lg`}
+                                    >
                                         {"Font"}
                                     </label>
-                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        <option>Serif</option>
-                                        <option>Sans-serif</option>
-                                        <option>Arial</option>
-                                    </select>
+                                    <div className="ml-[6%] mt-[1%] flex justify-center">
+                                        <SelectBox
+                                            onChange={undefined}
+                                            value={undefined}
+                                            className="h-[2vw] w-[9vw] p-2 text-base"
+                                        >
+                                            <option>Serif</option>
+                                            <option>Sans-serif</option>
+                                            <option>Arial</option>
+                                        </SelectBox>
+                                    </div>
                                 </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
-                                    <label className={`${text} text-lg`}>
+                                <div className="flex w-full justify-center md:pl-[4%]">
+                                    <label
+                                        className={`${text} mt-[0.2%] text-lg`}
+                                    >
                                         {"Font size"}
                                     </label>
-                                    <select className="rounded-xl border border-gray-300 bg-white p-3 text-lg text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        <option>Small</option>
-                                        <option>Medium</option>
-                                        <option>Large</option>
-                                    </select>
+                                    <div className="mt-[1%] flex justify-center pl-[6.8%]">
+                                        <SelectBox
+                                            onChange={undefined}
+                                            value={undefined}
+                                            className="h-[2vw] w-[9vw] p-2 text-base"
+                                        >
+                                            <option>Small</option>
+                                            <option>Medium</option>
+                                            <option>Large</option>
+                                        </SelectBox>
+                                    </div>
                                 </div>
                                 <div className="flex w-full flex-row items-center justify-center space-x-2">
                                     <label className={`${text} text-lg`}>

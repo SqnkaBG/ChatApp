@@ -27,14 +27,14 @@ const Button = () => {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, [storedData, setStoredData, setColors]);
+    }, [storedData, setStoredData]);
 
     return (
         <button
             type="submit"
             className={`${
                 buttonStyle
-            } m-[-8%] h-10 cursor-pointer rounded-lg border-b-4 px-6 py-2 transition-all hover:-translate-y-px hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-2 active:brightness-90 lg:mt-0 lg:w-[5%]`}
+            } m-[-8%] h-11 cursor-pointer rounded-lg border-b-4 px-6 py-2 text-lg transition-all hover:-translate-y-px hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-2 active:brightness-90 lg:mt-0 lg:w-[6%]`}
         >
             Save{" "}
         </button>

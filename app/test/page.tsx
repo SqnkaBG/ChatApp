@@ -7,6 +7,7 @@ export default function Test() {
             <Sidebar />
             <div className="h-[92.6%] w-screen flex-col items-center justify-center bg-gray-300">
                 <SearchBar />
+                <div className="flex h-1/2 w-1/2 items-center justify-center"></div>
             </div>
         </div>
     );

@@ -48,7 +48,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/"
                 >
-                    <LuHome className={`${icon} h-4/5 w-4/5`} />
+                    <LuHome className={`${icon} size-4/5`} />
                 </a>
             </div>
 
@@ -57,7 +57,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/friends"
                 >
-                    <LiaUserFriendsSolid className={`${icon} h-4/5 w-4/5`} />
+                    <LiaUserFriendsSolid className={`${icon} size-4/5`} />
                 </a>
             </div>
 
@@ -66,7 +66,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/dms"
                 >
-                    <FaRegMessage className={`${icon} h-4/5 w-4/5`} />
+                    <FaRegMessage className={`${icon} size-4/5`} />
                 </a>
             </div>
 
@@ -75,7 +75,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/user_account"
                 >
-                    <VscAccount className={`${icon} h-4/5 w-4/5`} />
+                    <VscAccount className={`${icon} size-4/5`} />
                 </a>
             </div>
 
@@ -84,7 +84,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/settings"
                 >
-                    <IoSettingsOutline className={`${icon} h-4/5 w-4/5`} />
+                    <IoSettingsOutline className={`${icon} size-4/5`} />
                 </a>
             </div>
         </div>
