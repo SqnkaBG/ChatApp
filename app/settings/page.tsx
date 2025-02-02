@@ -8,21 +8,26 @@ export default function Settings() {
     const [style, setStyle] = useState("1");
     const [storedData, setStoredData] = useState<string>("1");
     const [selectValue, setSelectValue] = useState<string>(storedData); //this is the value of the select elem.
-    const [bg, setBg] = useState<string>(storedData); //this is the value of the select elem.
+    const [bg, setBg] = useState<string>(storedData); //background colour
+    const [button, setButton] = useState<string>(""); //button colours
 
     const setColors = () => {
         if (storedData === "1") {
             setBg("bg-gradient-to-r from-blue-400 to-blue-600");
+            setButton("border-green-800 bg-green-700 text-white");
         } else if (storedData === "2") {
             setBg("bg-gradient-to-br from-[#374151] via-[#f43f5e] to-red-300");
+            setButton("border-red-900 bg-red-800 text-black");
         } else if (storedData === "3") {
             setBg(
                 "bg-gradient-to-tr from-purple-100 via-purple-500 to-purple-800"
             );
+            setButton("border-blue-800 bg-blue-700 text-white");
         } else if (storedData === "4") {
             setBg(
                 "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
             );
+            setButton("border-peach bg-light-peach text-black");
         }
     };
 
@@ -224,17 +229,7 @@ export default function Settings() {
                                 </div>
                                 <button
                                     type="submit"
-                                    className={`${
-                                        storedData === "1"
-                                            ? "border-green-800 bg-green-700 text-white"
-                                            : storedData === "2"
-                                              ? "border-red-900 bg-red-800 text-black"
-                                              : storedData === "3"
-                                                ? "border-blue-800 bg-blue-700 text-white"
-                                                : storedData === "4"
-                                                  ? "border-peach bg-light-peach text-black"
-                                                  : ""
-                                    } m-[-8%] h-10 cursor-pointer rounded-lg border-b-[4px] px-6 py-2 transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[6%]`}
+                                    className={`${button} m-[-8%] h-10 cursor-pointer rounded-lg border-b-[4px] px-6 py-2 transition-all hover:-translate-y-[1px] hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-[2px] active:brightness-90 lg:mt-0 lg:w-[6%]`}
                                 >
                                     Submit{" "}
                                 </button>
