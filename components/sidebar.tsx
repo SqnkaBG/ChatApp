@@ -43,50 +43,48 @@ const Sidebar = () => {
                 bg
             } fixed bottom-0 flex h-[10%] w-full flex-row items-center justify-center sm:w-[4.5%] md:static md:h-full md:w-[4.5%] md:flex-col`}
         >
-            <div className="flex h-[80%] w-full items-center justify-center md:h-[10%]">
+            <div className="flex h-4/5 w-full items-center justify-center md:h-[10%]">
                 <a
-                    className="flex h-full w-full items-center justify-center"
+                    className="flex size-full items-center justify-center"
                     href="/"
                 >
-                    <LuHome className={`${icon} h-[80%] w-[80%]`} />
+                    <LuHome className={`${icon} h-4/5 w-4/5`} />
                 </a>
             </div>
 
-            <div className="flex h-[100%] w-full items-center justify-center md:h-[10%]">
+            <div className="flex size-full items-center justify-center md:h-[10%]">
                 <a
-                    className="flex h-full w-full items-center justify-center"
+                    className="flex size-full items-center justify-center"
                     href="/friends"
                 >
-                    <LiaUserFriendsSolid
-                        className={`${icon} h-[80%] w-[80%]`}
-                    />
+                    <LiaUserFriendsSolid className={`${icon} h-4/5 w-4/5`} />
                 </a>
             </div>
 
             <div className="flex h-[70%] w-full items-center justify-center md:h-[10%]">
                 <a
-                    className="flex h-full w-full items-center justify-center"
+                    className="flex size-full items-center justify-center"
                     href="/dms"
                 >
-                    <FaRegMessage className={`${icon} h-[80%] w-[80%]`} />
+                    <FaRegMessage className={`${icon} h-4/5 w-4/5`} />
                 </a>
             </div>
 
-            <div className="flex h-[80%] w-full items-center justify-center md:h-[10%]">
+            <div className="flex h-4/5 w-full items-center justify-center md:h-[10%]">
                 <a
-                    className="flex h-full w-full items-center justify-center"
+                    className="flex size-full items-center justify-center"
                     href="/user_account"
                 >
-                    <VscAccount className={`${icon} h-[80%] w-[80%]`} />
+                    <VscAccount className={`${icon} h-4/5 w-4/5`} />
                 </a>
             </div>
 
-            <div className="flex h-[80%] w-full items-center justify-center md:h-[10%]">
+            <div className="flex h-4/5 w-full items-center justify-center md:h-[10%]">
                 <a
-                    className="flex h-full w-full items-center justify-center"
+                    className="flex size-full items-center justify-center"
                     href="/settings"
                 >
-                    <IoSettingsOutline className={`${icon} h-[80%] w-[80%]`} />
+                    <IoSettingsOutline className={`${icon} h-4/5 w-4/5`} />
                 </a>
             </div>
         </div>

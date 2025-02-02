@@ -43,12 +43,12 @@ const SearchBar = () => {
         <div
             className={`${
                 bg
-            } sticky top-0 z-10 flex h-[10%] w-[100%] flex-wrap items-center justify-center md:h-[8%] md:w-[100%]`}
+            } sticky top-0 z-10 flex h-[10%] w-full flex-wrap items-center justify-center md:h-[8%] md:w-full`}
         >
             <div
                 className={`${
                     searchBox
-                } flex w-[30%] rounded-md transition-all duration-300 focus-within:w-[80%] hover:w-[80%] active:w-[80%] md:w-[30%] md:focus-within:w-[30%] md:hover:w-[30%] md:active:w-[30%]`}
+                } flex w-[30%] rounded-md transition-all duration-300 focus-within:w-4/5 hover:w-4/5 active:w-4/5 md:w-[30%] md:focus-within:w-[30%] md:hover:w-[30%] md:active:w-[30%]`}
             >
                 <input
                     className="flex w-full bg-transparent text-center text-black outline-none placeholder:text-gray-700 focus:placeholder:text-transparent"

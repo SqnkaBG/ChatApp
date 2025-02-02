@@ -75,7 +75,7 @@ export default function Settings() {
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
             <div
-                className={` ${bg} h-full w-full flex-col items-center justify-center overflow-y-auto md:w-[95.5%]`}
+                className={` ${bg} size-full flex-col items-center justify-center overflow-y-auto md:w-[95.5%]`}
             >
                 <SearchBar />
                 <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">

@@ -158,7 +158,7 @@ export default function Account() {
                 <div
                     className={`${
                         isVisible === true ? "z-10 block" : "hidden"
-                    } absolute left-5 top-56 flex h-[40%] w-[90%] transform flex-row flex-wrap justify-center rounded-xl bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-[20%] lg:w-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-nowrap lg:items-center lg:space-x-5`}
+                    } absolute left-5 top-56 flex h-2/5 w-[90%] flex-row flex-wrap justify-center rounded-xl bg-gray-900 p-[2%] lg:left-1/2 lg:top-1/2 lg:h-1/5 lg:w-[35%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-nowrap lg:items-center lg:space-x-5`}
                 >
                     {Array.from({ length: images.length }, (_, index) => {
                         return (
@@ -179,9 +179,9 @@ export default function Account() {
                 </div>
                 <form
                     onSubmit={handleSubmit}
-                    className={`${isVisible === true ? "pointer-events-none blur-[2px] brightness-50" : ""} ${bg} b-0 h-f flex h-[93%] w-[100%] flex-col items-center space-y-1 overflow-y-auto pb-[1.5%] text-black`}
+                    className={`${isVisible === true ? "pointer-events-none blur-[2px] brightness-50" : ""} ${bg} b-0 h-f flex h-[93%] w-full flex-col items-center space-y-1 overflow-y-auto pb-[1.5%] text-black`}
                 >
-                    <div className="mb-[7%] mt-[5%] flex h-[13%] w-[75%] flex-row items-center justify-center lg:mb-[1%] lg:mt-0 lg:h-[18%] lg:w-[40%] lg:pb-0">
+                    <div className="mb-[7%] mt-[5%] flex h-[13%] w-3/4 flex-row items-center justify-center lg:mb-[1%] lg:mt-0 lg:h-[18%] lg:w-2/5 lg:pb-0">
                         <Image
                             src={imageSrc}
                             alt="pfp"
@@ -203,9 +203,9 @@ export default function Account() {
                             {storedData.username || "Not set yet"}
                         </h1>
                     </div>
-                    <hr className={`${border} w-[70%] lg:w-[40%]`} />
-                    <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto pb-[5%] pt-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-[50%]">
-                        <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
+                    <hr className={`${border} w-[70%] lg:w-2/5`} />
+                    <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto py-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-1/2">
+                        <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label className={`${text} lg:text-lg`}>
                                 Username
                             </label>
@@ -218,10 +218,10 @@ export default function Account() {
                                     storedData.username || "Create Username"
                                 }
                                 onChange={(e) => setUsername(e.target.value)}
-                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
-                        <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
+                        <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label className={`${text} lg:text-lg`}>
                                 First Name
                             </label>
@@ -233,10 +233,10 @@ export default function Account() {
                                     storedData.firstName || "Create First Name"
                                 }
                                 onChange={(e) => setFirstName(e.target.value)}
-                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
-                        <div className="flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
+                        <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label className={`${text} lg:text-lg`}>
                                 Last Name
                             </label>
@@ -248,10 +248,10 @@ export default function Account() {
                                     storedData.lastName || "Create Last Name"
                                 }
                                 onChange={(e) => setLastName(e.target.value)}
-                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
-                        <div className="mr-[4.1%] flex h-auto w-[80%] flex-row items-center justify-center space-x-5 md:w-[90%]">
+                        <div className="mr-[4.1%] flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
                             <label className={`${text} lg:text-lg`}>
                                 Phone Number
                             </label>
@@ -265,12 +265,12 @@ export default function Account() {
                                     storedData.telNumber ||
                                     "Create telephone number"
                                 }
-                                className={`${shadow} h-8 w-[50%] rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
                     </div>
                     <hr
-                        className={`${border} w-[70%] pb-[4%] lg:w-[40%] lg:pb-[1%]`}
+                        className={`${border} w-[70%] pb-[4%] lg:w-2/5 lg:pb-[1%]`}
                     />
                     <Button />
                 </form>
