@@ -20,16 +20,16 @@ const SelectBox = ({
     const setColors = () => {
         if (storedData === "2") {
             setBoxStyle("bg-gray-800 text-white");
-            setBoxBoxStyle("bg-white");
+            setBoxBoxStyle("bg-gray-600");
         } else if (storedData === "3") {
             setBoxStyle("bg-gray-200 text-black");
-            setBoxBoxStyle("bg-black");
+            setBoxBoxStyle("bg-gray-400");
         } else if (storedData === "4") {
             setBoxStyle("bg-gray-800 text-white");
-            setBoxBoxStyle("bg-white");
+            setBoxBoxStyle("bg-gray-600");
         } else {
             setBoxStyle("bg-gray-200  text-black");
-            setBoxBoxStyle("bg-black");
+            setBoxBoxStyle("bg-gray-400");
         }
     };
     useEffect(() => {
@@ -59,14 +59,14 @@ const SelectBox = ({
             </select>
 
             <div
-                className={`${boxboxStyle} pointer-events-none absolute right-0 top-0 flex h-full w-1/5 items-center justify-center bg-opacity-10 text-3xl opacity-50 hover:bg-opacity-20 hover:opacity-60`}
+                className={`${boxboxStyle} /10 hover:/20 pointer-events-none absolute right-0 top-0 flex h-full w-1/5 items-center justify-center text-3xl opacity-50 hover:opacity-60`}
             >
                 <Image
                     height={90}
                     width={90}
                     src={arrow.src}
                     alt="arrow"
-                    className="h-[65%] w-[65%]"
+                    className="size-[65%]"
                 />
             </div>
         </div>
