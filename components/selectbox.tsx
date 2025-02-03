@@ -1,35 +1,43 @@
-import arrow from "@/components/white-down-arrow-png-2.png";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const SelectBox = ({
-    value = undefined,
-    onChange = undefined,
+    value,
+    onChange,
     className,
     children,
 }: {
-    value: string | undefined;
-    onChange: React.ChangeEventHandler<HTMLSelectElement> | undefined;
+    value: string;
+    onChange: React.ChangeEventHandler<HTMLSelectElement>;
     className: string;
     children: React.ReactNode;
 }) => {
     const [storedData, setStoredData] = useState("1");
     const [boxStyle, setBoxStyle] = useState<string>("");
     const [boxboxStyle, setBoxBoxStyle] = useState<string>("");
+    const [bg, setBg] = useState<string>("");
+    const [text, setText] = useState<string>("");
 
     const setColors = () => {
         if (storedData === "2") {
-            setBoxStyle("bg-gray-800 text-white");
-            setBoxBoxStyle("bg-gray-600");
+            setBoxStyle("border-red-800");
+            setBoxBoxStyle("bg-red-700");
+            setBg("bg-gray-700");
+            setText("text-gray-200");
         } else if (storedData === "3") {
-            setBoxStyle("bg-gray-200 text-black");
-            setBoxBoxStyle("bg-gray-400");
+            setBoxStyle("border-purple-700");
+            setBoxBoxStyle("bg-purple-700");
+            setBg("bg-white");
+            setText("text-gray-600");
         } else if (storedData === "4") {
-            setBoxStyle("bg-gray-800 text-white");
-            setBoxBoxStyle("bg-gray-600");
+            setBoxStyle("border-orange-800");
+            setBoxBoxStyle("bg-orange-700");
+            setBg("bg-gray-700");
+            setText("text-gray-200");
         } else {
-            setBoxStyle("bg-gray-200  text-black");
-            setBoxBoxStyle("bg-gray-400");
+            setBoxStyle("border-green-600");
+            setBoxBoxStyle("bg-green-700");
+            setBg("bg-white");
+            setText("text-gray-600");
         }
     };
     useEffect(() => {
@@ -49,25 +57,51 @@ const SelectBox = ({
     }, [storedData, setStoredData]);
 
     return (
-        <div className="-translate-x-1/2 -translate-y-1/2">
-            <select
-                value={value}
-                onChange={onChange}
-                className={`${className} ${boxStyle} appearance-none border-none shadow-lg outline-none focus:outline-none`}
-            >
-                {children}
-            </select>
-
-            <div
-                className={`${boxboxStyle} /10 hover:/20 pointer-events-none absolute right-0 top-0 flex h-full w-1/5 items-center justify-center text-3xl opacity-50 hover:opacity-60`}
-            >
-                <Image
-                    height={90}
-                    width={90}
-                    src={arrow.src}
-                    alt="arrow"
-                    className="size-[65%]"
-                />
+        <div>
+            <div className="relative inline-flex self-center">
+                <svg
+                    className={`${boxboxStyle} pointer-events-none absolute right-0 top-0 m-2 rounded p-2 text-white`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                    width="40px"
+                    height="40px"
+                    viewBox="0 0 38 22"
+                    version="1.1"
+                >
+                    <g
+                        id="ZahnhelferDE—Design"
+                        stroke="none"
+                        strokeWidth="1"
+                        fill="none"
+                        fillRule="evenodd"
+                    >
+                        <g
+                            id="ZahnhelferDE–Icon&amp;Asset-Download"
+                            transform="translate(-539.000000, -199.000000)"
+                            fill="#ffffff"
+                            fillRule="nonzero"
+                        >
+                            {/*arrow */}
+                            <g
+                                id="Icon-/-ArrowRight-Copy-2"
+                                transform="translate(538.000000, 183.521208)"
+                            >
+                                <polygon
+                                    id="Path-Copy"
+                                    transform="translate(20.000000, 18.384776) rotate(135.000000) translate(-20.000000, -18.384776) "
+                                    points="33 5.38477631 33 31.3847763 29 31.3847763 28.999 9.38379168 7 9.38477631 7 5.38477631"
+                                />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <select
+                    value={value}
+                    onChange={onChange}
+                    className={`${className} ${boxStyle} ${bg} ${text} appearance-none rounded-xl border-2 pl-5 pr-10 text-lg font-bold hover:border-gray-200 focus:outline-none`}
+                >
+                    {children}
+                </select>
             </div>
         </div>
     );
