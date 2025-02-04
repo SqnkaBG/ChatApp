@@ -7,7 +7,7 @@ export const exportMessagestoFile = async () => {
         .map(
             (msg) =>
                 `${new Date(msg.timestamp).toLocaleString()}: ${msg.content}`
-        ) // Format timestamp to readable format
+        )
         .join("\n");
 
     const blob = new Blob([messageString], { type: "text/plain" });
