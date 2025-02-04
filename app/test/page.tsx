@@ -1,5 +1,7 @@
 "use client";
 
+import { exportMessagestoFile } from "@/components/backend/exportMessages";
+import { triggerImport } from "@/components/backend/triggerImport";
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
 import { messagesTable } from "@/lib/database";
@@ -7,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function Test() {
     const [messages, setMessages] = useState<
-        { id: number; content: string; timestamp: number }[]
+        { content: string; timestamp: number }[]
     >([]);
     const [newMessage, setNewMessage] = useState("");
 
@@ -24,7 +26,7 @@ export default function Test() {
         if (newMessage.trim()) {
             const message = { content: newMessage, timestamp: Date.now() };
             await messagesTable.add(message);
-            setMessages((prev) => [...prev, { ...message, id: Date.now() }]);
+            setMessages((prev) => [...prev, message]);
             setNewMessage("");
         }
     };
@@ -35,6 +37,12 @@ export default function Test() {
             handleAddMessage();
         }
     };
+    const testExport = () => {
+        exportMessagestoFile();
+    };
+    const testImport = () => {
+        triggerImport();
+    };
 
     return (
         <div className="g-white flex h-screen max-h-screen w-full grow">
@@ -44,8 +52,8 @@ export default function Test() {
                 <div className="text-black">
                     <h1>Messages</h1>
                     <ul>
-                        {messages.map((msg) => (
-                            <li key={msg.id}>
+                        {messages.map((msg, index) => (
+                            <li key={index}>
                                 {msg.content}{" "}
                                 <small>
                                     {new Date(msg.timestamp).toLocaleTimeString(
@@ -63,6 +71,11 @@ export default function Test() {
                         onKeyDown={handleKeyDown}
                         placeholder="Type a message and press Enter"
                     />
+                </div>
+                <div>
+                    <h1>Test Export/Import Messages</h1>
+                    <button onClick={testExport}>Export Messages</button>
+                    <button onClick={testImport}>Import Messages</button>
                 </div>
             </div>
         </div>
