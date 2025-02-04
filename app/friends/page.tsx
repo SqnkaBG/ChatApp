@@ -6,14 +6,52 @@ import Sidebar from "@/components/sidebar";
 import Image from "next/image";
 import { /*useEffect, useRef,*/ useState } from "react";
 import { AiOutlineMessage } from "react-icons/ai";
-import { MdGroupAdd } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
+import {
+    IoIosCloseCircleOutline,
+    IoIosInformationCircleOutline,
+} from "react-icons/io";
+import { LuTrash } from "react-icons/lu";
+import {
+    MdGroupAdd,
+    MdOutlineDeleteForever,
+    MdOutlineDriveFileRenameOutline,
+} from "react-icons/md";
+import { RiAddBoxLine } from "react-icons/ri";
 import contacts from "./contacts.json";
 
 export default function Friends() {
     const [add, setAdd] = useState<boolean>(false);
+    const [edit, setEdit] = useState<boolean>(false);
+    const [delete1, setDelete1] = useState<boolean>(false);
+    const [info, setInfo] = useState<boolean>(false);
+    const [selectedContact, setSelectedContact] = useState<boolean | number>(
+        false
+    );
 
     const handleAddNew = () => {
         setAdd(!add);
+        setEdit(false);
+        setDelete1(false);
+    };
+    const handleEdit = () => {
+        setEdit(!edit);
+        setDelete1(false);
+    };
+    const handleDelete = () => {
+        setDelete1(!delete1);
+        setEdit(false);
+    };
+    const handleInfoButton = (input: number | boolean) => {
+        setInfo(true);
+        return typeof input == "number"
+            ? setSelectedContact(input)
+            : typeof input == "boolean"
+              ? setSelectedContact(input)
+              : setSelectedContact(selectedContact);
+    };
+    const handleCloseButton = () => {
+        setInfo(false);
     };
 
     return (
@@ -24,12 +62,12 @@ export default function Friends() {
                 <SearchBar />
                 <div className="flex h-full w-full flex-row bg-gray-300">
                     {/* Contacts Sidebar */}
-                    <div className="flex h-[100%] w-[50%] flex-col border-r border-blue-500 bg-white shadow-lg">
-                        <div className="flex h-full w-full flex-col space-y-3 overflow-y-auto p-4">
+                    <div className="flex h-[100%] w-[30%] flex-col items-center border-r bg-white shadow-lg">
+                        <div className="flex h-full w-full flex-col items-center space-y-3 overflow-y-auto pt-[2%]">
                             {contacts.map((el, index) => (
                                 <div
                                     key={index}
-                                    className="borderp-3 flex cursor-pointer flex-row items-center gap-4 rounded-lg text-black hover:bg-gray-200"
+                                    className="pt- flex w-[90%] flex-row items-center justify-between rounded-lg px-[7%] text-black hover:bg-gray-200"
                                 >
                                     <Image
                                         src={Cat}
@@ -39,28 +77,116 @@ export default function Friends() {
                                         className="rounded-full object-cover"
                                     />
                                     <h1 className="text-lg font-semibold">
-                                        {el.name}
+                                        {el.username}
                                     </h1>
-                                    <AiOutlineMessage />
-                                    <MdGroupAdd />
+                                    <button>
+                                        <AiOutlineMessage />
+                                    </button>
+
+                                    <button>
+                                        <MdGroupAdd />
+                                    </button>
+                                    {edit == true && (
+                                        <button>
+                                            <MdOutlineDriveFileRenameOutline />
+                                        </button>
+                                    )}
+
+                                    {delete1 == true && (
+                                        <button>
+                                            <MdOutlineDeleteForever />
+                                        </button>
+                                    )}
+                                    {edit == false && delete1 == false && (
+                                        <button
+                                            onClick={() =>
+                                                handleInfoButton(index)
+                                            }
+                                        >
+                                            <IoIosInformationCircleOutline />
+                                        </button>
+                                    )}
                                 </div>
                             ))}
                         </div>
-                        <button
-                            onClick={handleAddNew}
-                            className="m-4 rounded bg-black px-4 py-2 text-white hover:bg-gray-800"
-                        >
-                            Add New
-                        </button>
-                    </div>
-
-                    {/* Chat Window */}
-                    <div className="flex h-full w-full flex-col bg-gray-500">
-                        <div className="flex flex-1 items-center justify-center text-2xl font-semibold text-white">
-                            Select a contact to start chatting or to create room
+                        <div className="items-between flex w-[80%] flex-row justify-between">
+                            <button
+                                onClick={handleAddNew}
+                                className="m-4 rounded px-4 py-2 text-black"
+                            >
+                                <RiAddBoxLine />
+                            </button>
+                            <button
+                                onClick={handleEdit}
+                                className="m-4 rounded px-4 py-2 text-black"
+                            >
+                                <FaRegEdit />
+                            </button>
+                            <button
+                                onClick={handleDelete}
+                                className="m-4 rounded px-4 py-2 text-black"
+                            >
+                                <LuTrash />
+                            </button>
                         </div>
                     </div>
 
+                    {/* Chat Window */}
+                    {(info == true && typeof selectedContact == "number" && (
+                        <div className="flex h-full w-full flex-col bg-gray-500">
+                            <button
+                                onClick={handleCloseButton}
+                                className="flex justify-end text-[350%]"
+                            >
+                                <IoIosCloseCircleOutline />
+                            </button>
+
+                            {contacts.map((el, index) => {
+                                return index == selectedContact ? (
+                                    <form
+                                        key={index}
+                                        className="flex flex-col items-center justify-center py-[5%]"
+                                    >
+                                        <Image
+                                            src={Cat}
+                                            alt="Profile Picture"
+                                            width={200}
+                                            height={200}
+                                            className="rounded-full object-cover pb-[2%]"
+                                        />
+                                        <input
+                                            className="my-[2%] text-center text-3xl text-black"
+                                            placeholder={el.username}
+                                        />
+                                        <input
+                                            className="my-[2%] text-center text-3xl text-black"
+                                            placeholder={el.firstName}
+                                        />
+                                        <input
+                                            className="my-[2%] text-center text-3xl text-black"
+                                            placeholder={el.lastName}
+                                        />
+                                        <input
+                                            type="text"
+                                            className="my-[2%] text-center text-3xl text-black"
+                                            placeholder={el.ip}
+                                        />
+                                        <input
+                                            type="text"
+                                            className="w-[28%] py-[2%] text-center text-black"
+                                            placeholder={el.notes}
+                                        />
+                                    </form>
+                                ) : null;
+                            })}
+                        </div>
+                    )) || (
+                        <div className="flex h-full w-full flex-col bg-gray-500">
+                            <p className="flex flex-1 items-center justify-center text-2xl font-semibold text-white">
+                                Select a contact to review it
+                            </p>
+                        </div>
+                    )}
                     {/* Add Contact Modal */}
                     {add == true && (
                         <form className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 text-black">
