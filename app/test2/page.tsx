@@ -3,7 +3,7 @@
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
 
-export default function Test() {
+export default function Test2() {
     return (
         <div className="g-white flex h-screen max-h-screen w-full grow">
             <Sidebar />
