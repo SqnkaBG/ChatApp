@@ -19,7 +19,7 @@ const SelectBox = ({
 
     const setColors = () => {
         if (storedData === "2") {
-            setBoxStyle("border-red-800");
+            setBoxStyle("border-white");
             setBoxBoxStyle("bg-red-700");
             setBg("bg-gray-700");
             setText("text-gray-200");
@@ -60,11 +60,11 @@ const SelectBox = ({
         <div>
             <div className="relative inline-flex self-center">
                 <svg
-                    className={`${boxboxStyle} pointer-events-none absolute right-0 top-0 m-2 rounded p-2 text-white`}
+                    className={`${boxboxStyle} pointer-events-none absolute right-0 top-0 m-2 rounded-md p-2 text-white`}
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
-                    width="40px"
-                    height="40px"
+                    width="30px"
+                    height="30px"
                     viewBox="0 0 38 22"
                     version="1.1"
                 >
@@ -98,7 +98,7 @@ const SelectBox = ({
                 <select
                     value={value}
                     onChange={onChange}
-                    className={`${className} ${boxStyle} ${bg} ${text} appearance-none rounded-xl border-2 pl-5 pr-10 text-lg font-bold hover:border-gray-200 focus:outline-none`}
+                    className={`${className} ${boxStyle} ${bg} ${text} h-12 appearance-none rounded-xl border-2 pl-5 pr-10 text-lg font-bold hover:border-gray-200 focus:outline-none`}
                 >
                     {children}
                 </select>

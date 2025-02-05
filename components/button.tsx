@@ -3,15 +3,22 @@ import React, { useEffect, useState } from "react";
 const Button = () => {
     const [storedData, setStoredData] = useState("1");
     const [buttonStyle, setButtonStyle] = useState<string>("");
+    const [boxShadow, setBoxShadow] = useState<string>("");
 
     const setColors = () => {
-        if (storedData === "2")
-            setButtonStyle("border-red-900 bg-red-800 text-black");
-        else if (storedData === "3")
-            setButtonStyle("border-blue-800 bg-blue-700 text-white");
-        else if (storedData === "4")
-            setButtonStyle("border-peach bg-light-peach text-black");
-        else setButtonStyle("border-green-800 bg-green-700 text-white");
+        if (storedData === "2") {
+            setButtonStyle("bg-[#1a1a1a] border-white text-[#eee]");
+            setBoxShadow("0 0 0 2px rgb(255, 255, 255)");
+        } else if (storedData === "3") {
+            setButtonStyle("border-purple-800 bg-blue-500 text-white");
+            setBoxShadow("0 0 0 2px rgb(107, 33, 168)");
+        } else if (storedData === "4") {
+            setButtonStyle("border-gray-800 bg-orange-800 text-black");
+            setBoxShadow("0 0 0 2px rgb(31, 41, 55)");
+        } else {
+            setButtonStyle("border-blue-800 bg-green-700 text-white");
+            setBoxShadow("0 0 0 2px rgb(30, 58, 138)");
+        }
     };
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -34,9 +41,12 @@ const Button = () => {
             type="submit"
             className={`${
                 buttonStyle
-            } m-[-8%] h-11 cursor-pointer rounded-lg border-b-4 px-6 py-2 text-lg transition-all hover:-translate-y-px hover:border-b-[6px] hover:brightness-110 focus:outline-none active:translate-y-[2px] active:border-b-2 active:brightness-90 lg:mt-0 lg:w-[6%]`}
+            } m-[-8%] h-11 cursor-pointer rounded-md border-b-[6px] px-6 py-2 text-lg outline-none transition-all hover:-translate-y-px hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-red-900 active:translate-y-[2px] active:border-b-2 active:brightness-90 lg:mt-0 lg:w-[6%]`}
+            style={{
+                boxShadow: boxShadow,
+            }}
         >
-            Save{" "}
+            Save
         </button>
     );
 };

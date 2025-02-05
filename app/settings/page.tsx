@@ -77,7 +77,7 @@ export default function Settings() {
         <div className="flex h-screen w-screen flex-wrap bg-white">
             <Sidebar />
             <div
-                className={` ${bg} h-[90%] w-full flex-col items-center justify-center overflow-y-auto md:h-full md:w-[95.5%]`}
+                className={`${bg} h-[90%] w-full flex-col items-center justify-center overflow-y-auto md:h-full md:w-[95.5%]`}
             >
                 <SearchBar />
                 <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">
@@ -95,7 +95,7 @@ export default function Settings() {
                                         setStyle(e.target.value);
                                         setSelectValue(e.target.value);
                                     }}
-                                    className="h-14 w-60"
+                                    className="w-60"
                                 >
                                     <option value="1">Blue/Green</option>
                                     <option value="2">Red/Black</option>
@@ -106,166 +106,165 @@ export default function Settings() {
                             <hr className="my-7 border-gray-400" />
 
                             <h1
-                                className={`${text} drop-shadow-lg" flex items-center justify-center text-4xl font-extrabold`}
+                                className={`${text} flex items-center justify-center text-4xl font-extrabold drop-shadow-lg`}
                             >
                                 DMS settings
                             </h1>
                             <h2
-                                className={`${text} " mt-[1%] flex items-center justify-center text-xl font-medium`}
+                                className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium`}
                             >
                                 Upload config from file
                             </h2>
 
-                            <div className="ml-[8%] flex flex-row items-center justify-center">
+                            <div className="ml-[8%] flex flex-col items-center justify-center space-y-4">
                                 <input
                                     type="file"
                                     accept=".js"
-                                    className="mt-2 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="mt-2 rounded-xl border border-gray-800 bg-white px-4 py-3 text-sm text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                            </div>
-
-                            <h2
-                                className={`${text} font-medium" mt-[1%] flex items-center justify-center text-xl md:mb-[1%]`}
-                            >
-                                Make a config
-                            </h2>
-                            <div className="flex flex-col items-center justify-center space-y-4">
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label className={`${text} text-lg`}>
-                                        {"Time Format"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-40"
-                                        value=""
-                                    >
-                                        <option>12-hour</option>
-                                        <option>24-hour</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
-                                    <label className={`${text} text-lg`}>
-                                        {"Font"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-44"
-                                        value=""
-                                    >
-                                        <option>Serif</option>
-                                        <option>Sans-serif</option>
-                                        <option>Arial</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2 md:pl-[4%]">
-                                    <label className={`${text} text-lg`}>
-                                        {"Font size"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-40"
-                                        value=""
-                                    >
-                                        <option>Small</option>
-                                        <option>Medium</option>
-                                        <option>Large</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label className={`${text} text-lg`}>
-                                        {"Display Avatars"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-32"
-                                        value=""
-                                    >
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label className={`${text} text-lg`}>
-                                        {"Animations"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-32"
-                                        value=""
-                                    >
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label className={`${text} text-lg`}>
-                                        {"Enable notifications"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-32"
-                                        value=""
-                                    >
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label className={`${text} text-lg`}>
-                                        {"Message Bubbles"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-40"
-                                        value=""
-                                    >
-                                        <option>Rounded</option>
-                                        <option>Square</option>
-                                        <option>None</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label className={`${text} text-lg`}>
-                                        {"Message Bubble Color"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-48"
-                                        value=""
-                                    >
-                                        <option>some colors</option>
-                                    </SelectBox>
-                                </div>
-                                <div className="flex w-full flex-row items-center justify-center space-x-2">
-                                    <label className={`${text} text-lg`}>
-                                        {"Enable custom chat background"}
-                                    </label>
-                                    <SelectBox
-                                        onChange={(e) => {
-                                            console.log(e.target.value);
-                                        }}
-                                        className="h-14 w-32"
-                                        value=""
-                                    >
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                    </SelectBox>
+                                <h2
+                                    className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium md:mb-[1%]`}
+                                >
+                                    Make a config
+                                </h2>
+                                <div className="flex w-full max-w-md flex-col space-y-4">
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Time Format
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>12-hour</option>
+                                            <option>24-hour</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Font
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>Serif</option>
+                                            <option>Sans-serif</option>
+                                            <option>Arial</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Font size
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>Small</option>
+                                            <option>Medium</option>
+                                            <option>Large</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Display Avatars
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Animations
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Enable notifications
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Message Bubbles
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>Rounded</option>
+                                            <option>Square</option>
+                                            <option>None</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Message Bubble Color
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>colors</option>
+                                        </SelectBox>
+                                    </div>
+                                    <div className="flex flex-row items-center justify-between">
+                                        <label className={`${text} text-lg`}>
+                                            Enable custom chat background
+                                        </label>
+                                        <SelectBox
+                                            onChange={(e) =>
+                                                console.log(e.target.value)
+                                            }
+                                            className="w-40"
+                                            value=""
+                                        >
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </SelectBox>
+                                    </div>
                                 </div>
                                 <Button />
                             </div>
