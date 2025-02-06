@@ -1,6 +1,6 @@
 "use client";
 
-//import {settings} from "@/app/settings/config";
+import config from "@/app/settings/config.json";
 import Button from "@/components/button";
 import SearchBar from "@/components/searchbar";
 import SelectBox from "@/components/selectbox";
@@ -10,9 +10,10 @@ import React, { useEffect, useState } from "react";
 export default function Settings() {
     const [style, setStyle] = useState("1");
     const [storedData, setStoredData] = useState<string>("1");
-    const [selectValue, setSelectValue] = useState<string>(storedData); //this is the value of the select elem.
+    //const [selectValue, setSelectValue] = useState<string>(storedData); //this is the value of the select elem.
     const [bg, setBg] = useState<string>(storedData); //background colour
     const [text, setText] = useState<string>("");
+    const [data, setData] = useState(config);
 
     const setColors = () => {
         if (storedData === "2") {
@@ -33,9 +34,34 @@ export default function Settings() {
             setText("text-white");
         }
     };
+    const LoadData = () => {
+        try {
+            const storedData = localStorage.getItem("config");
 
-    /*  const setSetting = () => {
-    } */
+            if (storedData) {
+                const initialData = JSON.parse(storedData);
+                return initialData;
+            } else {
+                console.log("No data found in localStorage.");
+                return null;
+            }
+        } catch (error) {
+            console.error("Error loading config file:", error);
+            return null;
+        }
+    };
+    const updateField = (field: string, value: string) => {
+        setData((prevData) => {
+            const updatedData = {
+                ...prevData,
+                [field]: value,
+            };
+
+            localStorage.setItem("config", JSON.stringify(updatedData));
+
+            return updatedData;
+        });
+    };
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -47,15 +73,16 @@ export default function Settings() {
                     setStoredData("1");
                 }
                 setColors();
+                LoadData();
             } catch (error) {
                 console.error("Error accessing localStorage:", error);
             }
         }
     }, [style, storedData]);
-    useEffect(() => {
+    /*  useEffect(() => {
         setSelectValue(storedData); // Update selectValue whenever storedData changes
     }, [storedData]);
-
+ */
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const dataHasChanged = style !== storedData;
@@ -66,6 +93,9 @@ export default function Settings() {
                     // Save data to localStorage
                     if (style) localStorage.setItem("style", style);
                     setStoredData(style);
+                    /*  const fontValue = e.target.font.value;
+                    if (fontValue !== data.font) {
+                        updateField("font", fontValue); } */
                     alert("Data saved successfully!");
                     window.location.reload();
                 } catch (error) {
@@ -87,7 +117,7 @@ export default function Settings() {
                 <div className="flex h-[93%] w-full flex-col text-black">
                     <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-500">
                         <h1
-                            className={`${text} mt-[7%] flex items-center justify-center text-4xl font-extrabold drop-shadow-lg md:mt-[2%]`}
+                            className={`${text} ${config.font} mt-[7%] flex items-center justify-center text-4xl font-extrabold drop-shadow-lg md:mt-[2%]`}
                         >
                             Change style
                         </h1>
@@ -97,10 +127,9 @@ export default function Settings() {
                         >
                             <div className="mt-4 flex flex-row justify-center">
                                 <SelectBox
-                                    value={selectValue}
                                     onChange={(e) => {
                                         setStyle(e.target.value);
-                                        setSelectValue(e.target.value);
+                                        //setSelectValue(e.target.value);
                                     }}
                                     className="w-60"
                                 >
@@ -113,12 +142,12 @@ export default function Settings() {
                             <hr className="my-7 border-gray-400" />
 
                             <h1
-                                className={`${text} flex items-center justify-center text-4xl font-extrabold drop-shadow-lg`}
+                                className={`${text} ${config.font} flex items-center justify-center text-4xl font-extrabold drop-shadow-lg`}
                             >
                                 DMS settings
                             </h1>
                             <h2
-                                className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium drop-shadow-lg`}
+                                className={`${text} ${config.font} mt-[1%] flex items-center justify-center text-xl font-medium drop-shadow-lg`}
                             >
                                 Upload config from file
                             </h2>
@@ -126,27 +155,24 @@ export default function Settings() {
                             <div className="flex flex-col items-center justify-center space-y-4">
                                 <input
                                     type="file"
-                                    accept=".js"
+                                    accept=".json"
                                     className="mt-2 rounded-xl border border-gray-800 bg-white px-4 py-3 text-sm text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                                 <h2
-                                    className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium drop-shadow-lg md:mb-[1%]`}
+                                    className={`${text} ${config.font} mt-[1%] flex items-center justify-center text-xl font-medium drop-shadow-lg md:mb-[1%]`}
                                 >
                                     Make a config
                                 </h2>
                                 <div className="flex w-[35%] flex-col space-y-4 pb-[5%] md:pb-[1%]">
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${config.font} text-lg drop-shadow-lg`}
                                         >
                                             Time Format
                                         </label>
                                         <SelectBox
-                                            onChange={(e) =>
-                                                console.log(e.target.value)
-                                            }
+                                            onChange={(e) => console.log(e)}
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>12-hour</option>
                                             <option>24-hour</option>
@@ -154,25 +180,34 @@ export default function Settings() {
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${data.font} text-lg drop-shadow-lg`}
                                         >
                                             Font
                                         </label>
                                         <SelectBox
-                                            onChange={(e) =>
-                                                console.log(e.target.value)
-                                            }
+                                            //name="font" defaultValue={data.font}
+                                            onChange={(e) => {
+                                                updateField(
+                                                    "font",
+                                                    e.target.value
+                                                );
+                                            }}
                                             className="w-40"
-                                            value=""
                                         >
-                                            <option>Serif</option>
-                                            <option>Sans-serif</option>
-                                            <option>Arial</option>
+                                            <option value="font-serif">
+                                                Serif
+                                            </option>
+                                            <option value="font-sans">
+                                                Sans-serif
+                                            </option>
+                                            <option value="font-mono">
+                                                Monospace
+                                            </option>
                                         </SelectBox>
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${config.font} text-lg drop-shadow-lg`}
                                         >
                                             Font size
                                         </label>
@@ -181,7 +216,6 @@ export default function Settings() {
                                                 console.log(e.target.value)
                                             }
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>Small</option>
                                             <option>Medium</option>
@@ -190,7 +224,7 @@ export default function Settings() {
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${config.font} text-lg drop-shadow-lg`}
                                         >
                                             Display Avatars
                                         </label>
@@ -199,7 +233,6 @@ export default function Settings() {
                                                 console.log(e.target.value)
                                             }
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>Yes</option>
                                             <option>No</option>
@@ -207,7 +240,7 @@ export default function Settings() {
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${config.font} text-lg drop-shadow-lg`}
                                         >
                                             Animations
                                         </label>
@@ -216,7 +249,6 @@ export default function Settings() {
                                                 console.log(e.target.value)
                                             }
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>Yes</option>
                                             <option>No</option>
@@ -224,7 +256,7 @@ export default function Settings() {
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${config.font} text-lg drop-shadow-lg`}
                                         >
                                             Enable notifications
                                         </label>
@@ -233,7 +265,6 @@ export default function Settings() {
                                                 console.log(e.target.value)
                                             }
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>Yes</option>
                                             <option>No</option>
@@ -241,7 +272,7 @@ export default function Settings() {
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${config.font} text-lg drop-shadow-lg`}
                                         >
                                             Message Bubbles
                                         </label>
@@ -250,7 +281,6 @@ export default function Settings() {
                                                 console.log(e.target.value)
                                             }
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>Rounded</option>
                                             <option>Square</option>
@@ -258,7 +288,9 @@ export default function Settings() {
                                         </SelectBox>
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
-                                        <label className={`${text} text-lg`}>
+                                        <label
+                                            className={`${text} ${config.font} text-lg`}
+                                        >
                                             Message Bubble Color
                                         </label>
                                         <SelectBox
@@ -266,14 +298,13 @@ export default function Settings() {
                                                 console.log(e.target.value)
                                             }
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>colors</option>
                                         </SelectBox>
                                     </div>
                                     <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label
-                                            className={`${text} text-lg drop-shadow-lg`}
+                                            className={`${text} ${config.font} text-lg drop-shadow-lg`}
                                         >
                                             Enable custom chat background
                                         </label>
@@ -282,7 +313,6 @@ export default function Settings() {
                                                 console.log(e.target.value)
                                             }
                                             className="w-40"
-                                            value=""
                                         >
                                             <option>Yes</option>
                                             <option>No</option>

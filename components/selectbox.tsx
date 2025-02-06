@@ -1,12 +1,11 @@
+import config from "@/app/settings/config.json";
 import React, { useEffect, useState } from "react";
 
 const SelectBox = ({
-    value,
     onChange,
     className,
     children,
 }: {
-    value: string;
     onChange: React.ChangeEventHandler<HTMLSelectElement>;
     className: string;
     children: React.ReactNode;
@@ -96,9 +95,8 @@ const SelectBox = ({
                     </g>
                 </svg>
                 <select
-                    value={value}
                     onChange={onChange}
-                    className={`${className} ${boxStyle} ${bg} ${text} h-12 appearance-none rounded-xl border-2 pl-5 pr-10 text-lg font-bold hover:border-gray-200 focus:outline-none`}
+                    className={`${className} ${boxStyle} ${bg} ${text} ${config.font} h-12 appearance-none rounded-xl border-2 pl-5 pr-10 text-lg font-bold hover:border-gray-200 focus:outline-none`}
                 >
                     {children}
                 </select>

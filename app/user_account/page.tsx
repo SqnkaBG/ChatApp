@@ -1,5 +1,6 @@
 "use client";
 
+import config from "@/app/settings/config.json";
 import Button from "@/components/button";
 import SearchBar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
@@ -196,16 +197,16 @@ export default function Account() {
                         </label>
 
                         <h1
-                            className={`${text} ml-[2%] mt-[4%] overflow-auto text-center text-3xl font-bold drop-shadow-lg md:text-4xl lg:ml-[0.5%] lg:overflow-visible`}
+                            className={`${text} ${config.font} ml-[2%] mt-[4%] overflow-auto text-center text-3xl font-bold drop-shadow-lg md:text-4xl lg:ml-[0.5%] lg:overflow-visible`}
                         >
                             {storedData.username || "Not set yet"}
                         </h1>
                     </div>
                     <hr className={`${border} w-[70%] lg:w-2/5`} />
-                    <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto py-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-1/2">
-                        <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
+                    <div className="flex max-h-[55%] w-[95%] flex-col items-center justify-center space-y-8 overflow-y-auto py-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-[40%] lg:space-y-12">
+                        <div className="flex h-auto w-4/5 flex-row items-center gap-4 md:w-[90%]">
                             <label
-                                className={`${text} drop-shadow-lg lg:text-lg`}
+                                className={`${text} ${config.font} flex w-1/4 drop-shadow-lg lg:text-lg`}
                             >
                                 Username
                             </label>
@@ -218,12 +219,12 @@ export default function Account() {
                                     storedData.username || "Create Username"
                                 }
                                 onChange={(e) => setUsername(e.target.value)}
-                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} ${config.font} flex h-8 w-3/4 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
-                        <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
+                        <div className="flex h-auto w-4/5 flex-row items-center gap-4 md:w-[90%]">
                             <label
-                                className={`${text} drop-shadow-lg lg:text-lg`}
+                                className={`${text} ${config.font} w-1/4 drop-shadow-lg lg:text-lg`}
                             >
                                 First Name
                             </label>
@@ -235,12 +236,12 @@ export default function Account() {
                                     storedData.firstName || "Create First Name"
                                 }
                                 onChange={(e) => setFirstName(e.target.value)}
-                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} ${config.font} h-8 w-3/4 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
-                        <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
+                        <div className="flex h-auto w-4/5 flex-row items-center gap-4 md:w-[90%]">
                             <label
-                                className={`${text} drop-shadow-lg lg:text-lg`}
+                                className={`${text} ${config.font} w-1/4 drop-shadow-lg lg:text-lg`}
                             >
                                 Last Name
                             </label>
@@ -252,12 +253,12 @@ export default function Account() {
                                     storedData.lastName || "Create Last Name"
                                 }
                                 onChange={(e) => setLastName(e.target.value)}
-                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} ${config.font} h-8 w-3/4 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
                             />
                         </div>
-                        <div className="mr-[4.1%] flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
+                        <div className="flex h-auto w-4/5 flex-row items-center gap-4 md:w-[90%]">
                             <label
-                                className={`${text} drop-shadow-lg lg:text-lg`}
+                                className={`${text} ${config.font} w-1/4 drop-shadow-lg lg:text-lg`}
                             >
                                 Phone Number
                             </label>
@@ -271,7 +272,7 @@ export default function Account() {
                                     storedData.telNumber ||
                                     "Create telephone number"
                                 }
-                                className={`${shadow} h-8 w-1/2 rounded border-2 border-solid pl-[0.5%] font-serif text-base text-black outline-none`}
+                                className={`${shadow} ${config.font} h-8 w-3/4 rounded border-2 border-solid pl-[0.5%] text-base text-black outline-none`}
                             />
                         </div>
                     </div>

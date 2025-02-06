@@ -1,3 +1,4 @@
+import config from "@/app/settings/config.json";
 import React, { useEffect, useState } from "react";
 
 const Button = () => {
@@ -41,7 +42,7 @@ const Button = () => {
             type="submit"
             className={`${
                 buttonStyle
-            } m-[-8%] h-11 cursor-pointer rounded-md border-b-[6px] px-6 py-2 text-lg outline-none transition-all hover:-translate-y-px hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-red-900 active:translate-y-[2px] active:border-b-2 active:brightness-90 lg:mt-0 lg:w-[6%]`}
+            } ${config.font} m-[-8%] h-11 cursor-pointer rounded-md border-b-[6px] px-6 py-2 text-lg outline-none transition-all hover:-translate-y-px hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-red-900 active:translate-y-[2px] active:border-b-2 active:brightness-90 lg:mt-0 lg:w-[6%]`}
             style={{
                 boxShadow: boxShadow,
             }}
