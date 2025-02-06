@@ -56,10 +56,8 @@ export default function Account() {
             setBorder("border-blue-700");
             setText("text-white");
         } else if (style === "4") {
-            setShadow("shadow-custom-peachy border-orange-700");
-            setBg(
-                "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
-            );
+            setShadow("shadow-custom-orange border-orange-700");
+            setBg("bg-gradient-to-br from-pink-200  to-rose-500");
             setBorder("border-peach");
             setText("text-black");
         } else {
@@ -198,7 +196,7 @@ export default function Account() {
                         </label>
 
                         <h1
-                            className={`${text} ml-[2%] mt-[4%] overflow-auto text-center text-3xl font-bold md:text-4xl lg:ml-[0.5%] lg:overflow-visible`}
+                            className={`${text} ml-[2%] mt-[4%] overflow-auto text-center text-3xl font-bold drop-shadow-lg md:text-4xl lg:ml-[0.5%] lg:overflow-visible`}
                         >
                             {storedData.username || "Not set yet"}
                         </h1>
@@ -206,7 +204,9 @@ export default function Account() {
                     <hr className={`${border} w-[70%] lg:w-2/5`} />
                     <div className="flex h-[55%] w-[95%] flex-col items-center justify-center space-y-12 overflow-y-auto py-[5%] md:h-[45%] md:pb-[3%] md:pt-[2%] lg:w-1/2">
                         <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className={`${text} lg:text-lg`}>
+                            <label
+                                className={`${text} drop-shadow-lg lg:text-lg`}
+                            >
                                 Username
                             </label>
                             <input
@@ -222,7 +222,9 @@ export default function Account() {
                             />
                         </div>
                         <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className={`${text} lg:text-lg`}>
+                            <label
+                                className={`${text} drop-shadow-lg lg:text-lg`}
+                            >
                                 First Name
                             </label>
                             <input
@@ -237,7 +239,9 @@ export default function Account() {
                             />
                         </div>
                         <div className="flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className={`${text} lg:text-lg`}>
+                            <label
+                                className={`${text} drop-shadow-lg lg:text-lg`}
+                            >
                                 Last Name
                             </label>
                             <input
@@ -252,7 +256,9 @@ export default function Account() {
                             />
                         </div>
                         <div className="mr-[4.1%] flex h-auto w-4/5 flex-row items-center justify-center space-x-5 md:w-[90%]">
-                            <label className={`${text} lg:text-lg`}>
+                            <label
+                                className={`${text} drop-shadow-lg lg:text-lg`}
+                            >
                                 Phone Number
                             </label>
                             <input

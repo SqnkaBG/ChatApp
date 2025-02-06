@@ -10,7 +10,6 @@ import { VscAccount } from "react-icons/vsc";
 const Sidebar = () => {
     const [storedData, setStoredData] = useState<string>("");
     const [bg, setBg] = useState<string>("");
-    const [icon, setIcon] = useState<string>("");
 
     const setColors = () => {
         if (storedData === "2") {
@@ -18,8 +17,7 @@ const Sidebar = () => {
         } else if (storedData === "3") {
             setBg("bg-cyan-500");
         } else if (storedData === "4") {
-            setBg("bg-peach");
-            setIcon("text-gray-800");
+            setBg("bg-orange-500");
         } else setBg("bg-[#00cc77]");
     };
     useEffect(() => {
@@ -48,7 +46,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/"
                 >
-                    <LuHome className={`${icon} size-4/5`} />
+                    <LuHome className="size-4/5" />
                 </a>
             </div>
 
@@ -57,7 +55,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/friends"
                 >
-                    <LiaUserFriendsSolid className={`${icon} size-4/5`} />
+                    <LiaUserFriendsSolid className="size-4/5" />
                 </a>
             </div>
 
@@ -66,7 +64,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/dms"
                 >
-                    <FaRegMessage className={`${icon} size-4/5`} />
+                    <FaRegMessage className="size-4/5" />
                 </a>
             </div>
 
@@ -75,7 +73,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/user_account"
                 >
-                    <VscAccount className={`${icon} size-4/5`} />
+                    <VscAccount className="size-4/5" />
                 </a>
             </div>
 
@@ -84,7 +82,7 @@ const Sidebar = () => {
                     className="flex size-full items-center justify-center"
                     href="/settings"
                 >
-                    <IoSettingsOutline className={`${icon} size-4/5`} />
+                    <IoSettingsOutline className="size-4/5" />
                 </a>
             </div>
         </div>

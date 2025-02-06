@@ -1,5 +1,6 @@
 "use client";
 
+//import {settings} from "@/app/settings/config";
 import Button from "@/components/button";
 import SearchBar from "@/components/searchbar";
 import SelectBox from "@/components/selectbox";
@@ -23,15 +24,18 @@ export default function Settings() {
             );
             setText("text-white");
         } else if (storedData === "4") {
-            setBg(
-                "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#d97706] via-[#d97706] to-[#c2410c]"
-            );
+            setBg("bg-gradient-to-br from-pink-200  to-rose-500");
             setText("text-black");
         } else {
-            setBg("bg-gradient-to-r from-blue-400 to-blue-600");
+            setBg(
+                "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-blue-400 via-white to-blue-600"
+            );
             setText("text-white");
         }
     };
+
+    /*  const setSetting = () => {
+    } */
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -80,14 +84,17 @@ export default function Settings() {
                 className={`${bg} h-[90%] w-full flex-col items-center justify-center overflow-y-auto md:h-full md:w-[95.5%]`}
             >
                 <SearchBar />
-                <div className="flex h-[93%] w-full flex-col pb-[1%] text-black">
+                <div className="flex h-[93%] w-full flex-col text-black">
                     <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-blue-500">
                         <h1
-                            className={`${text} mt-[2%] flex items-center justify-center text-4xl font-extrabold drop-shadow-lg`}
+                            className={`${text} mt-[7%] flex items-center justify-center text-4xl font-extrabold drop-shadow-lg md:mt-[2%]`}
                         >
                             Change style
                         </h1>
-                        <form onSubmit={handleSubmit}>
+                        <form
+                            onSubmit={handleSubmit}
+                            className="mb-[5%] lg:mb-[1%]"
+                        >
                             <div className="mt-4 flex flex-row justify-center">
                                 <SelectBox
                                     value={selectValue}
@@ -100,7 +107,7 @@ export default function Settings() {
                                     <option value="1">Blue/Green</option>
                                     <option value="2">Red/Black</option>
                                     <option value="3">Purple/Blue</option>
-                                    <option value="4">Orange/Yellow</option>
+                                    <option value="4">Orange/Pink</option>
                                 </SelectBox>
                             </div>
                             <hr className="my-7 border-gray-400" />
@@ -111,25 +118,27 @@ export default function Settings() {
                                 DMS settings
                             </h1>
                             <h2
-                                className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium`}
+                                className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium drop-shadow-lg`}
                             >
                                 Upload config from file
                             </h2>
 
-                            <div className="ml-[8%] flex flex-col items-center justify-center space-y-4">
+                            <div className="flex flex-col items-center justify-center space-y-4">
                                 <input
                                     type="file"
                                     accept=".js"
                                     className="mt-2 rounded-xl border border-gray-800 bg-white px-4 py-3 text-sm text-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                                 <h2
-                                    className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium md:mb-[1%]`}
+                                    className={`${text} mt-[1%] flex items-center justify-center text-xl font-medium drop-shadow-lg md:mb-[1%]`}
                                 >
                                     Make a config
                                 </h2>
-                                <div className="flex w-full max-w-md flex-col space-y-4">
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                <div className="flex w-[35%] flex-col space-y-4 pb-[5%] md:pb-[1%]">
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Time Format
                                         </label>
                                         <SelectBox
@@ -143,8 +152,10 @@ export default function Settings() {
                                             <option>24-hour</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Font
                                         </label>
                                         <SelectBox
@@ -159,8 +170,10 @@ export default function Settings() {
                                             <option>Arial</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Font size
                                         </label>
                                         <SelectBox
@@ -175,8 +188,10 @@ export default function Settings() {
                                             <option>Large</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Display Avatars
                                         </label>
                                         <SelectBox
@@ -190,8 +205,10 @@ export default function Settings() {
                                             <option>No</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Animations
                                         </label>
                                         <SelectBox
@@ -205,8 +222,10 @@ export default function Settings() {
                                             <option>No</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Enable notifications
                                         </label>
                                         <SelectBox
@@ -220,8 +239,10 @@ export default function Settings() {
                                             <option>No</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Message Bubbles
                                         </label>
                                         <SelectBox
@@ -236,7 +257,7 @@ export default function Settings() {
                                             <option>None</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
                                         <label className={`${text} text-lg`}>
                                             Message Bubble Color
                                         </label>
@@ -250,8 +271,10 @@ export default function Settings() {
                                             <option>colors</option>
                                         </SelectBox>
                                     </div>
-                                    <div className="flex flex-row items-center justify-between">
-                                        <label className={`${text} text-lg`}>
+                                    <div className="flex flex-col items-center justify-between md:flex-row">
+                                        <label
+                                            className={`${text} text-lg drop-shadow-lg`}
+                                        >
                                             Enable custom chat background
                                         </label>
                                         <SelectBox

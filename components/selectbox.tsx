@@ -19,7 +19,7 @@ const SelectBox = ({
 
     const setColors = () => {
         if (storedData === "2") {
-            setBoxStyle("border-white");
+            setBoxStyle("border-red-900");
             setBoxBoxStyle("bg-red-700");
             setBg("bg-gray-700");
             setText("text-gray-200");
@@ -34,7 +34,7 @@ const SelectBox = ({
             setBg("bg-gray-700");
             setText("text-gray-200");
         } else {
-            setBoxStyle("border-green-600");
+            setBoxStyle("border-blue-600");
             setBoxBoxStyle("bg-green-700");
             setBg("bg-white");
             setText("text-gray-600");

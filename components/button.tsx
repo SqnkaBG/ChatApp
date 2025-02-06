@@ -7,17 +7,17 @@ const Button = () => {
 
     const setColors = () => {
         if (storedData === "2") {
-            setButtonStyle("bg-[#1a1a1a] border-white text-[#eee]");
-            setBoxShadow("0 0 0 2px rgb(255, 255, 255)");
+            setButtonStyle("bg-[#1a1a1a] border-dark-red text-[#eee]");
+            setBoxShadow("0 0 0 2px rgb(124, 3, 3)");
         } else if (storedData === "3") {
             setButtonStyle("border-purple-800 bg-blue-500 text-white");
             setBoxShadow("0 0 0 2px rgb(107, 33, 168)");
         } else if (storedData === "4") {
-            setButtonStyle("border-gray-800 bg-orange-800 text-black");
-            setBoxShadow("0 0 0 2px rgb(31, 41, 55)");
+            setButtonStyle("border-orange-700 bg-gray-800 text-white");
+            setBoxShadow("0 0 0 2px rgb(194, 65, 12)");
         } else {
-            setButtonStyle("border-blue-800 bg-green-700 text-white");
-            setBoxShadow("0 0 0 2px rgb(30, 58, 138)");
+            setButtonStyle("border-blue-600 bg-green-700 text-white");
+            setBoxShadow("0 0 0 2px rgb(37, 99, 235)");
         }
     };
     useEffect(() => {

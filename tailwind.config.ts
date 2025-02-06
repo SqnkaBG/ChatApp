@@ -17,7 +17,7 @@ const config: Config = {
                 "custom-green": "3px 4px 0px 1px rgb(39, 129, 36)",
                 "custom-red": "3px 4px 0px 1px rgb(124, 3, 3)",
                 "custom-blue": "3px 4px 0px 1px rgb(61, 74, 255)",
-                "custom-peachy": "3px 4px 0px 1px rgb(233, 180, 149)",
+                "custom-orange": "3px 4px 0px 1px rgb(201, 84, 16)",
                 "custom-inset": "inset 2px 4px 7px 2px #444343",
                 solid: "0 4px 8px rgba(0, 0, 0, 0.8)",
             },
@@ -25,8 +25,7 @@ const config: Config = {
                 solid: "5px 4px 5px rgba(0, 0, 0, 0.8)",
             },
             colors: {
-                peach: "#edb889",
-                "light-peach": "#f4c79f",
+                "dark-red": "rgb(124, 3, 3)",
             },
         },
     },

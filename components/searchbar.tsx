@@ -16,10 +16,10 @@ const SearchBar = () => {
             setBg("bg-gradient-to-t from-blue-700 to-blue-500");
             setSearchBox("bg-slate-400");
         } else if (storedData === "4") {
-            setBg("bg-light-peach");
+            setBg("bg-gradient-to-t from-orange-800  to-orange-700");
             setSearchBox("bg-white");
         } else {
-            setBg("bg-teal-700");
+            setBg("bg-gradient-to-t from-teal-700  to-teal-800");
             setSearchBox("bg-slate-400");
         }
     };
