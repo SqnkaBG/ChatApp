@@ -9,11 +9,29 @@ import React, { useEffect, useState } from "react";
 
 export default function Settings() {
     const [style, setStyle] = useState("1");
-    const [storedData, setStoredData] = useState<string>("1");
+    const [storedData, setStoredData] = useState<string>("");
     //const [selectValue, setSelectValue] = useState<string>(storedData); //this is the value of the select elem.
     const [bg, setBg] = useState<string>(storedData); //background colour
     const [text, setText] = useState<string>("");
-    const [data, setData] = useState(config);
+    const [data, setData] = useState<{
+        time_format?: string | null;
+        font?: string | null;
+        font_size?: string | null;
+        display_avatars?: string | null;
+        enable_notifications?: string | null;
+        message_bubbles?: string | null;
+        message_bubble_color?: string | null;
+        enable_custom_chat_background?: string | null;
+    }>({
+        time_format: config["time-format"],
+        font: config.font,
+        font_size: config["font-size"],
+        display_avatars: config["display-avatars"],
+        enable_notifications: config["enable-notifications"],
+        message_bubbles: config["message-bubbles"],
+        message_bubble_color: config["message-bubble-color"],
+        enable_custom_chat_background: config["enable-custom-chat-background"],
+    });
 
     const setColors = () => {
         if (storedData === "2") {
@@ -38,16 +56,13 @@ export default function Settings() {
         try {
             const storedData = localStorage.getItem("config");
 
-            if (storedData) {
-                const initialData = JSON.parse(storedData);
-                return initialData;
-            } else {
-                console.log("No data found in localStorage.");
-                return null;
+            if (!storedData) {
+                const initialData = JSON.stringify(config);
+
+                localStorage.setItem("config", initialData);
             }
         } catch (error) {
             console.error("Error loading config file:", error);
-            return null;
         }
     };
     const updateField = (field: string, value: string) => {
@@ -74,13 +89,14 @@ export default function Settings() {
                 }
                 setColors();
                 LoadData();
+                console.log("font", data.font);
             } catch (error) {
                 console.error("Error accessing localStorage:", error);
             }
         }
-    }, [style, storedData]);
+    }, [style, storedData, LoadData]);
     /*  useEffect(() => {
-        setSelectValue(storedData); // Update selectValue whenever storedData changes
+        setSelectValue(storedData);
     }, [storedData]);
  */
     const handleSubmit = (e: React.FormEvent) => {
@@ -93,9 +109,8 @@ export default function Settings() {
                     // Save data to localStorage
                     if (style) localStorage.setItem("style", style);
                     setStoredData(style);
-                    /*  const fontValue = e.target.font.value;
-                    if (fontValue !== data.font) {
-                        updateField("font", fontValue); } */
+                    if (data.font) updateField("font", data.font);
+
                     alert("Data saved successfully!");
                     window.location.reload();
                 } catch (error) {
@@ -185,13 +200,12 @@ export default function Settings() {
                                             Font
                                         </label>
                                         <SelectBox
-                                            //name="font" defaultValue={data.font}
-                                            onChange={(e) => {
-                                                updateField(
-                                                    "font",
-                                                    e.target.value
-                                                );
-                                            }}
+                                            onChange={(e) =>
+                                                setData({
+                                                    ...data,
+                                                    font: e.target.value,
+                                                })
+                                            }
                                             className="w-40"
                                         >
                                             <option value="font-serif">
