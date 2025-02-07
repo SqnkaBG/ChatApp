@@ -5,10 +5,12 @@ const SelectBox = ({
     onChange,
     className,
     children,
+    //value,
 }: {
     onChange: React.ChangeEventHandler<HTMLSelectElement>;
     className: string;
     children: React.ReactNode;
+    //value : string,
 }) => {
     const [storedData, setStoredData] = useState("1");
     const [boxStyle, setBoxStyle] = useState<string>("");
@@ -95,7 +97,7 @@ const SelectBox = ({
                     </g>
                 </svg>
                 <select
-                    onChange={onChange}
+                    onChange={onChange} //value={value}
                     className={`${className} ${boxStyle} ${bg} ${text} ${config.font} h-12 appearance-none rounded-xl border-2 pl-5 pr-10 text-lg font-bold hover:border-gray-200 focus:outline-none`}
                 >
                     {children}
