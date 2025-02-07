@@ -2,7 +2,7 @@
     "time-format": "12-hour",
     "font": "font-mono",
     "font-size": "text-base",
-    "display-avatars": "yes",
+    "display avatars": "yes",
     "enable-notifications": "yes",
     "message-bubbles": "rounded",
     "message-bubble-color": "color",
